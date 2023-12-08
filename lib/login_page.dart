@@ -16,13 +16,17 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(
+                Icons.phone_android, //Change to logo
+              size: 100,
+            ),
+
           //Hello again!
           Text(
               'Hello Again!',
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 36)
-            ,
+              fontSize: 36),
           ),
           SizedBox(height: 10),
           Text(
