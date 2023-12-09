@@ -88,12 +88,12 @@ class _LoginPageState extends State<LoginPage> {
 
             //sign in button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0)
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
                 child: TextButton(
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pushNamed(context, '/navigation');
                     },
                     child: Text(
-                      '     Log in     ',
+                      '         Log in         ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
                         fontSize: 18.0, // Font size

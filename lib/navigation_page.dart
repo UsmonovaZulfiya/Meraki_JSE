@@ -60,6 +60,50 @@ class _NavigationPageState extends State<NavigationPage> {
                   child: Row(
                     children: <Widget> [
                       Icon(
+                        FontAwesomeIcons.search,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'Search',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 24.0,
+                    horizontal: 20.0,
+                  ),
+                  child: Row(
+                    children: <Widget> [
+                      Icon(
+                        FontAwesomeIcons.solidStar,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'Reccomendations',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 24.0,
+                    horizontal: 20.0,
+                  ),
+                  child: Row(
+                    children: <Widget> [
+                      Icon(
                         FontAwesomeIcons.paw,
                         color: Colors.white,
                       ),
@@ -120,6 +164,8 @@ class _NavigationPageState extends State<NavigationPage> {
                 ),
               ],
             ),
+
+
             Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 24.0,

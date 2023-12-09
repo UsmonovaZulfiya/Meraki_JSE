@@ -11,7 +11,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -149,6 +149,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          obscureText: true,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Password'
@@ -171,6 +172,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          obscureText: true,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Confirm password'
@@ -185,12 +187,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0)
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
                 child: TextButton(
@@ -198,7 +200,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       Navigator.pushNamed(context, '/navigation');
                     },
                     child: Text(
-                      'Register',
+                      '    Register    ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
                         fontSize: 18.0, // Font size

@@ -15,6 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 20),
             Text(
               'Welcome',
               style: TextStyle(
@@ -45,12 +46,12 @@ class _WelcomePageState extends State<WelcomePage> {
             SizedBox(height: 80),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0)
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
                 child: TextButton(
@@ -58,7 +59,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       Navigator.pushNamed(context, '/login');
                     },
                     child: Text(
-                      '     Log in     ',
+                      '         Log in         ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
                         fontSize: 18.0, // Font size
@@ -75,12 +76,12 @@ class _WelcomePageState extends State<WelcomePage> {
             SizedBox(height: 10),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0)
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
                   child: TextButton(
@@ -88,7 +89,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       Navigator.pushNamed(context, '/registration');
                     },
                     child: Text(
-                        'Registration',
+                        '    Registration    ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
                         fontSize: 18.0, // Font size
