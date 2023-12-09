@@ -11,10 +11,11 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
+      backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 50),
             Text(
               'Welcome',
               style: TextStyle(
@@ -34,7 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
             Center(
               child: Icon(
-                Icons.phone_android, //Change to logo
+                Icons.phone_android,  //Change to logo
                 size: 170,
               ),
             ),
@@ -42,54 +43,65 @@ class _WelcomePageState extends State<WelcomePage> {
             SizedBox(height: 80),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.circular(12.0)
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
-                child: Center(
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      '         Log in         ',
+                      style: TextStyle(
+                        color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
+                        fontSize: 18.0, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
+                        letterSpacing: 1.2, // Letter spacing
+                      ),
+
+                    )
                 ),
+
               ),
             ),
 
             SizedBox(height: 10),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.circular(12.0)
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
 
-                child: Center(
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/registration');
+                    },
+                    child: Text(
+                        '    Registration    ',
+                      style: TextStyle(
+                        color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
+                        fontSize: 18.0, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
+                        letterSpacing: 1.2, // Letter spacing
                     ),
-                  ),
-                ),
+
+                  )
               ),
             ),
 
-          ],
-        ),
+            ),
+        ],
       ),
+    ),
     );
   }
 }
