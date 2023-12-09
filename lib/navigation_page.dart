@@ -30,9 +30,10 @@ class _NavigationPageState extends State<NavigationPage> {
               child: Row(
                 children: <Widget> [
                   CircleAvatar(
-                    radius: 24.0,
+                    radius: 30.0,
                     backgroundColor: Colors.grey,
                   ),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20.0,
@@ -49,6 +50,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 ],
               ),
             ),
+
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:<Widget>  [
@@ -64,7 +66,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        'Search',
+                        ' Search',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -86,7 +88,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        'Reccomendations',
+                        ' Reccomendations',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -108,7 +110,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        'Adoption',
+                        ' Adoption',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -130,7 +132,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        'Favorites',
+                        ' Favorites',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -152,7 +154,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        'Profile',
+                        ' Profile',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -178,7 +180,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     color: Colors.white,
                   ),
                   Text(
-                    'Settings | Log out',
+                    ' Settings | Log out',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
