@@ -70,7 +70,7 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 1. Complete the adoption application form, providing necessary details as requested.
 1. Submit the application.
 ### Contacting Shelters/Organizations:
-1. Use provided contact information or buttons to get in touch with the shelter/rescue organization.
+1. Use provided contact information to get in touch with the shelter/rescue organization.
 1. Communicate inquiries or express interest in a specific pet.
 ## 4. User Profile Management
 ### Saving Favorites:
@@ -102,7 +102,7 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 * **Compatibility Matching:** Matching algorithm to suggest pets that align with user preferences and lifestyle.
 ### 4. Adoption Process Management
 * **Application Submission:** Seamless process for submitting adoption applications directly through the app.
-* **Communication Tools:** In-app messaging or contact details for connecting with shelters/rescue organizations.
+* **Communication Tools:** In-app contact details for connecting with shelters/rescue organizations.
 ### 5. User Interaction and Engagement
 * **Favorites List:** Ability to save favorite pets for future reference.
 * **Application Tracking:** Track the status of adoption applications and receive updates.
