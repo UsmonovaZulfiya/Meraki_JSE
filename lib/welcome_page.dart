@@ -15,11 +15,10 @@ class _WelcomePageState extends State<WelcomePage> {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             Text(
               'Welcome',
               style: TextStyle(
-                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 36),
             ),
@@ -27,7 +26,6 @@ class _WelcomePageState extends State<WelcomePage> {
             Text(
               'Some text....',
               style: TextStyle(
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
@@ -37,8 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
             Center(
               child: Icon(
-                Icons.phone_android,
-                color: Colors.white,//Change to logo
+                Icons.phone_android,  //Change to logo
                 size: 170,
               ),
             ),
