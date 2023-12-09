@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/adoption_screen.dart';
 import 'welcome_page.dart';
 import 'login_page.dart';
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:WelcomePage(),
+      home:AdoptionScreen(menuCallback: (){},),
     );
   }
-  }
+}
