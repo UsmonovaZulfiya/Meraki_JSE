@@ -60,17 +60,22 @@ class _NavigationPageState extends State<NavigationPage> {
                     horizontal: 20.0,
                   ),
                   child: Row(
-                    children: <Widget> [
+                    children: <Widget>[
                       Icon(
                         FontAwesomeIcons.search,
                         color: Colors.white,
                       ),
-                      Text(
-                        ' Search',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/petlist');
+                        },
+                        child: Text(
+                          ' Search',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

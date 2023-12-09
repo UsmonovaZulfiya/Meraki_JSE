@@ -4,6 +4,7 @@ import 'welcome_page.dart';
 import 'login_page.dart';
 import 'registration_page.dart';
 import 'navigation_page.dart';
+import 'pets_list_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/registration': (context) => const RegistrationPage(),
         '/navigation': (context) => const NavigationPage(),
+        '/petlist': (context) => PetsListPage(),
       }
     );
   }
