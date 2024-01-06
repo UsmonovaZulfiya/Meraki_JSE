@@ -135,3 +135,15 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ## **Acknowledgements** 
 
 ## **Support** 
+
+Responsibilities:
+Sabrina - front end
+Madina - full stack
+Zulfiya - back end
+Dilnoza - UI/UX and QA
+
+Contribution:
+Sabrina - Welcome page, Login page, Registration Page, Navigation Page
+Madina - pet page, pet's list page, adoption page
+Zulfiya - database design (using springboot and mysql), github management, testing, planning
+Dilnoza - UI design, Readme file
