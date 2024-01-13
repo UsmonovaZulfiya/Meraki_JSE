@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pet.dart';
+import '../classes/pet.dart';
 
 class PetsListPage extends StatelessWidget {
   final List<Pet> pets = [

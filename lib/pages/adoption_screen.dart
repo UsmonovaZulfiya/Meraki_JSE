@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled/animal_detail_screen.dart';
+import 'package:untitled/pages/animal_detail_screen.dart';
 
 class Animal {
   String name;

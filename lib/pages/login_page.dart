@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget{
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
@@ -24,9 +24,7 @@ class _LoginPageState extends State<LoginPage> {
             //Hello again!
             const Text(
               'Hello Again!',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
             const SizedBox(height: 10),
             const Text(
@@ -52,9 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Enter Your Email'
-                    ),
+                        border: InputBorder.none, hintText: 'Enter Your Email'),
                   ),
                 ),
               ),
@@ -74,11 +70,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Padding(
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
-                    obscureText: true, //Used for passwords, so we can not see password
+                    obscureText: true,
+                    //Used for passwords, so we can not see password
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Enter Your Password'
-                    ),
+                        hintText: 'Enter Your Password'),
                   ),
                 ),
               ),
@@ -93,9 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0)
-                ),
-
+                    borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/navigation');
@@ -108,13 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.bold, // Font weight
                         letterSpacing: 1.2, // Letter spacing
                       ),
-
-                    )
-                ),
-
+                    )),
               ),
             ),
-
 
             const SizedBox(height: 25),
 
@@ -122,7 +112,8 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Do not have an account?',
+                const Text(
+                  'Do not have an account?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -137,15 +128,12 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white, // Text color
                         fontSize: 12.0, // Font size
                       ),
-
-                    )
-                ),
+                    )),
               ],
             )
-
-          ],),
+          ],
+        ),
       ),
     );
   }
 }
-

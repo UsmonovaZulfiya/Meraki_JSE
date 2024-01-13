@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RegistrationPage extends StatefulWidget{
+class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
 
   @override
@@ -24,9 +24,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
             //Hello again!
             const Text(
               'Welcome!',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
             const SizedBox(height: 10),
             const Text(
@@ -54,15 +52,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'First Name'
-                          ),
+                              border: InputBorder.none, hintText: 'First Name'),
                         ),
                       ),
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -76,9 +71,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Last Name'
-                          ),
+                              border: InputBorder.none, hintText: 'Last Name'),
                         ),
                       ),
                     ),
@@ -103,14 +96,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Phone number'
-                          ),
+                              hintText: 'Phone number'),
                         ),
                       ),
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -124,9 +115,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Email'
-                          ),
+                              border: InputBorder.none, hintText: 'Email'),
                         ),
                       ),
                     ),
@@ -151,15 +140,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Password'
-                          ),
+                              border: InputBorder.none, hintText: 'Password'),
                         ),
                       ),
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -175,8 +161,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           obscureText: true,
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Confirm password'
-                          ),
+                              hintText: 'Confirm password'),
                         ),
                       ),
                     ),
@@ -184,7 +169,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 )
               ],
             ),
-
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -192,9 +176,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0)
-                ),
-
+                    borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/navigation');
@@ -207,17 +189,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         fontWeight: FontWeight.bold, // Font weight
                         letterSpacing: 1.2, // Letter spacing
                       ),
-
-                    )
-                ),
-
+                    )),
               ),
             ),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Already have an account?',
+                const Text(
+                  'Already have an account?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -232,13 +212,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         color: Colors.white, // Text color
                         fontSize: 12.0, // Font size
                       ),
-
-                    )
-                ),
+                    )),
               ],
             )
-
-          ],),
+          ],
+        ),
       ),
     );
   }

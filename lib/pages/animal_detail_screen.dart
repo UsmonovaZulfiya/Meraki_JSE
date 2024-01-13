@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled/adoption_screen.dart';
+import 'package:untitled/pages/adoption_screen.dart';
 
 class AnimalDetailScreen extends StatelessWidget {
   final Animal animal;
