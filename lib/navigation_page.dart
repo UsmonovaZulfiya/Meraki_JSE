@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavigationPage extends StatefulWidget{
-  const NavigationPage({Key? key}) : super(key : key);
+  const NavigationPage({super.key});
 
   @override
   State<NavigationPage> createState() => _NavigationPageState();
@@ -12,17 +12,17 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
+        backgroundColor: const Color.fromRGBO(70, 112, 112, 1.0),
     body: Container(
       child: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 24.0,
           horizontal: 20.0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget> [
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 24.0,
                 horizontal: 20.0,
@@ -35,7 +35,7 @@ class _NavigationPageState extends State<NavigationPage> {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: 20.0,
                     ),
                     child: Text(
@@ -55,13 +55,13 @@ class _NavigationPageState extends State<NavigationPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:<Widget>  [
                 Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 24.0,
                     horizontal: 20.0,
                   ),
                   child: Row(
                     children: <Widget>[
-                      Icon(
+                      const Icon(
                         FontAwesomeIcons.search,
                         color: Colors.white,
                       ),
@@ -69,7 +69,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         onPressed: () {
                           Navigator.pushNamed(context, '/petlist');
                         },
-                        child: Text(
+                        child: const Text(
                           ' Search',
                           style: TextStyle(
                             color: Colors.white,
@@ -81,7 +81,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 24.0,
                     horizontal: 20.0,
@@ -103,7 +103,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 24.0,
                     horizontal: 20.0,
@@ -125,7 +125,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 24.0,
                     horizontal: 20.0,
@@ -147,7 +147,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 24.0,
                     horizontal: 20.0,
@@ -173,7 +173,7 @@ class _NavigationPageState extends State<NavigationPage> {
             ),
 
 
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 24.0,
                 horizontal: 20.0,

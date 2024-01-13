@@ -9,12 +9,14 @@ class PetsListPage extends StatelessWidget {
     Pet(name: 'Sola', breed: 'Abyssinian cat', imageUrl: 'https://placekitten.com/203/303', animalType: 'Cat'),
   ];
 
+  PetsListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adoption'),
-        actions: [
+        title: const Text('Adoption'),
+        actions: const [
         ],
       ),
       body: Padding(
@@ -22,12 +24,12 @@ class PetsListPage extends StatelessWidget {
         child: Column(
           children: [
             _buildSearchBar(),
-            SizedBox(height: 7.0),
+            const SizedBox(height: 7.0),
             _buildFilterSection(),
-            SizedBox(height: 7.0),
+            const SizedBox(height: 7.0),
             Expanded(
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 8.0,
                   mainAxisSpacing: 8.0,
@@ -41,7 +43,7 @@ class PetsListPage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ClipRRect(
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(4.0)),
+                            borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                             child: Image.network(
                               pets[index].imageUrl,
                               fit: BoxFit.cover,),),),
@@ -52,21 +54,21 @@ class PetsListPage extends StatelessWidget {
                             children: [
                               Text(
                                 pets[index].name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 4.0),
+                              const SizedBox(height: 4.0),
                               Text(
                                 pets[index].breed,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.grey,
                                 ),),],),),],),);},),),],),),);}
   Widget _buildSearchBar() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search for pets...',
@@ -89,7 +91,7 @@ class PetsListPage extends StatelessWidget {
     ];
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       height: 60.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -100,8 +102,8 @@ class PetsListPage extends StatelessWidget {
               // will be implemented filter func
             },
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 8.0),
-              padding: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(12.0),
@@ -110,7 +112,7 @@ class PetsListPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(animalFilters[index]['icon']),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Text(animalFilters[index]['type']),
                 ],
               ),

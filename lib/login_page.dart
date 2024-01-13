@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget{
-  const LoginPage({Key? key}) : super(key : key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -11,25 +11,25 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
+      backgroundColor: const Color.fromRGBO(70, 112, 112, 1.0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.phone_android, //Change to logo
               size: 100,
             ),
 
             //Hello again!
-            Text(
+            const Text(
               'Hello Again!',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Welcome back!',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             //email
             Padding(
@@ -48,8 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             //password
             Padding(
@@ -71,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
                     obscureText: true, //Used for passwords, so we can not see password
                     decoration: InputDecoration(
@@ -84,13 +84,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             //sign in button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0)
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/navigation');
                     },
-                    child: Text(
+                    child: const Text(
                       '         Log in         ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
@@ -116,13 +116,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
 
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
 
             //register button
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Do not have an account?',
+                const Text('Do not have an account?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/registration');
                     },
-                    child: Text(
+                    child: const Text(
                       'Register now',
                       style: TextStyle(
                         color: Colors.white, // Text color
