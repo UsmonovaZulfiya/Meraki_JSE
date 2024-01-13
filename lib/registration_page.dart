@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RegistrationPage extends StatefulWidget{
-  const RegistrationPage({Key? key}) : super(key : key);
+  const RegistrationPage({super.key});
 
   @override
   State<RegistrationPage> createState() => _RegistrationPageState();
@@ -11,25 +11,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
+      backgroundColor: const Color.fromRGBO(70, 112, 112, 1.0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.phone_android, //Change to logo
               size: 100,
             ),
 
             //Hello again!
-            Text(
+            const Text(
               'Welcome!',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Registration',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
 
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             Row(
               children: [
@@ -50,8 +50,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -72,8 +72,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -98,8 +98,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -120,8 +120,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -146,8 +146,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -169,8 +169,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -189,7 +189,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0)
@@ -199,7 +199,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/navigation');
                     },
-                    child: Text(
+                    child: const Text(
                       '    Register    ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
@@ -217,7 +217,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Already have an account?',
+                const Text('Already have an account?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -226,7 +226,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/login');
                     },
-                    child: Text(
+                    child: const Text(
                       'Log in now',
                       style: TextStyle(
                         color: Colors.white, // Text color

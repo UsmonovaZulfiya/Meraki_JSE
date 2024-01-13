@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget{
-  const WelcomePage({Key? key}) : super(key : key);
+  const WelcomePage({super.key});
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -11,19 +11,19 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(70, 112, 112, 1.0),
+      backgroundColor: const Color.fromRGBO(70, 112, 112, 1.0),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 50),
-            Text(
+            const SizedBox(height: 50),
+            const Text(
               'Welcome',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Some text....',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -31,21 +31,21 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
 
-            SizedBox(height: 90),
+            const SizedBox(height: 90),
 
-            Center(
+            const Center(
               child: Icon(
                 Icons.phone_android,  //Change to logo
                 size: 170,
               ),
             ),
 
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0)
@@ -55,7 +55,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/login');
                     },
-                    child: Text(
+                    child: const Text(
                       '         Log in         ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
@@ -70,12 +70,12 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0)
@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/registration');
                     },
-                    child: Text(
+                    child: const Text(
                         '    Registration    ',
                       style: TextStyle(
                         color: Color.fromRGBO(70, 112, 112, 1.0), // Text color

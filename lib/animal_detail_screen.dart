@@ -6,7 +6,7 @@ import 'package:untitled/adoption_screen.dart';
 class AnimalDetailScreen extends StatelessWidget {
   final Animal animal;
 
-  AnimalDetailScreen({required this.animal});
+  const AnimalDetailScreen({super.key, required this.animal});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class AnimalDetailScreen extends StatelessWidget {
                     height: screenHeight * 0.5,
                     color: animal.backgroundColor,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           horizontal: 20.0, vertical: 60.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -50,11 +50,11 @@ class AnimalDetailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: screenHeight * 0.35,
                     child: Hero(
                       tag: animal.name,
-                      child: Image(
+                      child: const Image(
                         image: AssetImage('assets/images/sola.png'),
                         fit: BoxFit.fitHeight,
                       ),
@@ -64,8 +64,9 @@ class AnimalDetailScreen extends StatelessWidget {
               ),
               Expanded(
                   child: Container(
+                    color: Colors.white,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 22.0,
                         vertical: 30.0,
                       ),
@@ -77,11 +78,11 @@ class AnimalDetailScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-                              CircleAvatar(
+                              const CircleAvatar(
                                 radius: 22.0,
                                 backgroundImage: AssetImage('assets/images/me.jpg'),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10.0,
                               ),
                               Flexible(
@@ -100,7 +101,7 @@ class AnimalDetailScreen extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        Text(
+                                        const Text(
                                           'May 25, 2019',
                                           style: TextStyle(
                                             color: Colors.grey,
@@ -109,10 +110,10 @@ class AnimalDetailScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 8.0,
                                     ),
-                                    Text(
+                                    const Text(
                                       'Owner',
                                       style: TextStyle(
                                         color: Colors.grey,
@@ -124,10 +125,10 @@ class AnimalDetailScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
-                          Text(
+                          const Text(
                             'My job requires moving to another country. I don\'t have the opportunity to take the cat with me. I am looking for good people who will shelter Sola.',
                             style: TextStyle(
                               color: Colors.grey,
@@ -138,11 +139,18 @@ class AnimalDetailScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    color: Colors.white,
                   )),
               Container(
+                height: 150,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor.withOpacity(0.06),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
+                  ),
+                ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 22.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 22.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -150,7 +158,7 @@ class AnimalDetailScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 4.0,
                         color: Theme.of(context).primaryColor,
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.all(20.0),
                           child: Icon(
                             FontAwesomeIcons.heart,
@@ -158,7 +166,7 @@ class AnimalDetailScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 24.0,
                       ),
                       Expanded(
@@ -166,7 +174,7 @@ class AnimalDetailScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0),
                           elevation: 4.0,
                           color: Theme.of(context).primaryColor,
-                          child: Padding(
+                          child: const Padding(
                             padding: EdgeInsets.all(20.0),
                             child: Text(
                               'Adoption',
@@ -183,27 +191,24 @@ class AnimalDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                height: 150,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.06),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30.0),
-                    topLeft: Radius.circular(30.0),
-                  ),
-                ),
               )
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22.0),
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
             child: Material(
               borderRadius: BorderRadius.circular(20.0),
               elevation: 6.0,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20.0,
                   horizontal: 20.0,
                 ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                height: 140.0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -227,7 +232,7 @@ class AnimalDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Row(
@@ -243,14 +248,14 @@ class AnimalDetailScreen extends StatelessWidget {
                         ),
                         Text(
                           '${animal.age} years old',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Row(
@@ -260,7 +265,7 @@ class AnimalDetailScreen extends StatelessWidget {
                           color: Theme.of(context).primaryColor,
                           size: 16.0,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 6.0,
                         ),
                         Text(
@@ -275,11 +280,6 @@ class AnimalDetailScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                height: 140.0,
               ),
             ),
           )

@@ -25,7 +25,7 @@ class Animal {
 class AdoptionScreen extends StatefulWidget {
   final Function menuCallback;
 
-  AdoptionScreen({required this.menuCallback});
+  const AdoptionScreen({super.key, required this.menuCallback});
 
   @override
   _AdoptionScreenState createState() => _AdoptionScreenState();
@@ -42,7 +42,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
       distanceToUser: '3.6 km',
       isFemale: true,
       imageUrl: 'assets/images/sola.png',
-      backgroundColor: Color.fromRGBO(203, 213, 216, 1.0),
+      backgroundColor: const Color.fromRGBO(203, 213, 216, 1.0),
     ),
     Animal(
       name: 'Orion',
@@ -51,7 +51,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
       distanceToUser: '7.8 km',
       isFemale: false,
       imageUrl: 'assets/images/Sola.png',
-      backgroundColor: Color.fromRGBO(237, 214, 180, 1.0),
+      backgroundColor: const Color.fromRGBO(237, 214, 180, 1.0),
     ),
   ];
 
@@ -73,7 +73,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
 
   Widget buildAnimalIcon(int index) {
     return Padding(
-      padding: EdgeInsets.only(right: 30.0),
+      padding: const EdgeInsets.only(right: 30.0),
       child: Column(
         children: <Widget>[
           InkWell(
@@ -89,7 +89,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
               elevation: 8.0,
               borderRadius: BorderRadius.circular(20.0),
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Icon(
                   animalIcons[index],
                   size: 30.0,
@@ -100,7 +100,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12.0,
           ),
           Text(
@@ -121,16 +121,16 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
     final deviceWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsets.only(top: 60.0),
+      padding: const EdgeInsets.only(top: 60.0),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22.0),
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                InkWell(
+                const InkWell(
                   child: Icon(
                     FontAwesomeIcons.bars,
                   ),
@@ -152,14 +152,14 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                           FontAwesomeIcons.mapMarkerAlt,
                           color: Theme.of(context).primaryColor,
                         ),
-                        Text(
+                        const Text(
                           'Lyon, ',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 22.0,
                           ),
                         ),
-                        Text(
+                        const Text(
                           'France',
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
@@ -170,7 +170,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                     ),
                   ],
                 ),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 20.0,
                   backgroundImage: AssetImage('assets/images/me.jpg'),
                 ),
@@ -179,7 +179,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(top: 24.0),
+              padding: const EdgeInsets.only(top: 24.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.0),
@@ -188,7 +188,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 24.0,
                         vertical: 20.0,
                       ),
@@ -196,8 +196,8 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20.0)),
-                        padding: EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Row(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: const Row(
                           children: <Widget>[
                             Icon(
                               FontAwesomeIcons.search,
@@ -220,10 +220,10 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 120.0,
                       child: ListView.builder(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 24.0,
                             top: 8.0,
                           ),
@@ -235,7 +235,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             top: 10.0,
                           ),
                           itemCount: animals.length,
@@ -250,7 +250,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                     }));
                               },
                               child: Padding(
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                   bottom: 10.0,
                                   right: 20.0,
                                   left: 20.0,
@@ -262,7 +262,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                       borderRadius: BorderRadius.circular(20.0),
                                       elevation: 4.0,
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                           horizontal: 20.0,
                                           vertical: 20.0,
                                         ),
@@ -306,7 +306,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                                       ),
                                                     ],
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10.0,
                                                   ),
                                                   Text(
@@ -319,18 +319,18 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                                       FontWeight.w500,
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10.0,
                                                   ),
                                                   Text(
                                                     '${animal.age} years old',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       color: Colors.grey,
                                                       fontWeight:
                                                       FontWeight.w600,
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10.0,
                                                   ),
                                                   Row(
@@ -342,7 +342,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                                             .primaryColor,
                                                         size: 16.0,
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 6.0,
                                                       ),
                                                       Text(
@@ -366,6 +366,7 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                       ),
                                     ),
                                     Stack(
+                                      alignment: Alignment.center,
                                       children: <Widget>[
                                         Container(
                                           decoration: BoxDecoration(
@@ -386,7 +387,6 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                                           ),
                                         ),
                                       ],
-                                      alignment: Alignment.center,
                                     )
                                   ],
                                 ),

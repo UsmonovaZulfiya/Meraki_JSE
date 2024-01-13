@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:untitled/registration_page.dart';
 import 'welcome_page.dart';
 import 'login_page.dart';
-import 'registration_page.dart';
 import 'navigation_page.dart';
 import 'pets_list_page.dart';
 void main() {
