@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../service/authentication_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,6 +9,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final AuthService _authService = AuthService();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _login() async {
+    try {
+      await _authService.login(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      // Navigate to the next screen or perform any other actions
+      Navigator.pushNamed(context, '/navigation');
+    } catch (e) {
+      print(e.toString());
+      // Handle and display errors to the user
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
                         border: InputBorder.none, hintText: 'Enter Your Email'),
                   ),
                 ),
@@ -67,12 +89,13 @@ class _LoginPageState extends State<LoginPage> {
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
                   child: TextField(
                     obscureText: true,
+                    controller: _passwordController,
                     //Used for passwords, so we can not see password
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Enter Your Password'),
                   ),
@@ -92,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/navigation');
+                    _login();
                   },
                   child: const Text(
                     '         Log in         ',
