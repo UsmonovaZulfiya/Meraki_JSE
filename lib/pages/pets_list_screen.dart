@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
-import '../classes/pet.dart';
+import '../dto/pet.dart';
 
 class PetsListPage extends StatelessWidget {
   final List<Pet> pets = [
-    Pet(name: 'Buddy', breed: 'Labrador', imageUrl: 'https://placekitten.com/200/300', animalType: 'Dog'),
-    Pet(name: 'Charlie', breed: 'Beagle', imageUrl: 'https://placekitten.com/201/301', animalType: 'Dog'),
-    Pet(name: 'Max', breed: 'Golden Retriever', imageUrl: 'https://placekitten.com/202/302', animalType: 'Dog'),
-    Pet(name: 'Sola', breed: 'Abyssinian cat', imageUrl: 'https://placekitten.com/203/303', animalType: 'Cat'),
+    Pet(
+        name: 'Buddy',
+        breed: 'Labrador',
+        imageUrl: 'https://placekitten.com/200/300',
+        animalType: 'Dog'),
+    Pet(
+        name: 'Charlie',
+        breed: 'Beagle',
+        imageUrl: 'https://placekitten.com/201/301',
+        animalType: 'Dog'),
+    Pet(
+        name: 'Max',
+        breed: 'Golden Retriever',
+        imageUrl: 'https://placekitten.com/202/302',
+        animalType: 'Dog'),
+    Pet(
+        name: 'Sola',
+        breed: 'Abyssinian cat',
+        imageUrl: 'https://placekitten.com/203/303',
+        animalType: 'Cat'),
   ];
 
   PetsListPage({super.key});
@@ -16,8 +32,7 @@ class PetsListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Adoption'),
-        actions: const [
-        ],
+        actions: const [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -43,10 +58,14 @@ class PetsListPage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ClipRRect(
-                            borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
+                            borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(4.0)),
                             child: Image.network(
                               pets[index].imageUrl,
-                              fit: BoxFit.cover,),),),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -65,7 +84,23 @@ class PetsListPage extends StatelessWidget {
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.grey,
-                                ),),],),),],),);},),),],),),);}
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildSearchBar() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),

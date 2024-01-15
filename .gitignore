@@ -48,13 +48,6 @@ app.*.map.json
 **/android/gradlew
 **/android/gradlew.bat
 
-# iOS build artifacts
-/ios/Pods/
-/ios/Podfile.lock
-/ios/Podfile.resolved
-*.xcworkspace
-*.xcuserdatad/
-
 # Flutter plugin registration
 GeneratedPluginRegistrant.java
 

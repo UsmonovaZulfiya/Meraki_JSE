@@ -120,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
 
@@ -166,7 +166,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
 
@@ -178,18 +178,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/navigation');
-                    },
-                    child: const Text(
-                      '    Register    ',
-                      style: TextStyle(
-                        color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
-                        fontSize: 18.0, // Font size
-                        fontWeight: FontWeight.bold, // Font weight
-                        letterSpacing: 1.2, // Letter spacing
-                      ),
-                    )),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/navigation');
+                  },
+                  child: const Text(
+                    '    Register    ',
+                    style: TextStyle(
+                      color: Color.fromRGBO(70, 112, 112, 1.0), // Text color
+                      fontSize: 18.0, // Font size
+                      fontWeight: FontWeight.bold, // Font weight
+                      letterSpacing: 1.2, // Letter spacing
+                    ),
+                  ),
+                ),
               ),
             ),
 
@@ -203,18 +204,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    child: const Text(
-                      'Log in now',
-                      style: TextStyle(
-                        color: Colors.white, // Text color
-                        fontSize: 12.0, // Font size
-                      ),
-                    )),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  child: const Text(
+                    'Log in now',
+                    style: TextStyle(
+                      color: Colors.white, // Text color
+                      fontSize: 12.0, // Font size
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

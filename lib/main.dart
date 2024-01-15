@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/pages/registration_page.dart';
-import 'pages/welcome_page.dart';
-import 'pages/login_page.dart';
-import 'pages/navigation_page.dart';
-import 'pages/pets_list_page.dart';
+import 'package:untitled/pages/registration_screen.dart';
+import 'pages/welcome_screen.dart';
+import 'pages/login_screen.dart';
+import 'pages/navigation_screen.dart';
+import 'pages/pets_list_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,13 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes:{
+      routes: {
         '/': (context) => const WelcomePage(),
         '/login': (context) => const LoginPage(),
         '/registration': (context) => const RegistrationPage(),
         '/navigation': (context) => const NavigationPage(),
         '/petlist': (context) => PetsListPage(),
-      }
+      },
     );
   }
 }
