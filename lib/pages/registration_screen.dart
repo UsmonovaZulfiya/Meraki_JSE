@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../service/registration_service.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -8,6 +9,33 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  final AuthService _authService = AuthService();
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  Future<void> _register() async {
+    try {
+      await _authService.register(
+        firstName: _firstNameController.text,
+        lastName: _lastNameController.text,
+        phoneNumber: _phoneNumberController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
+        confirmPassword: _confirmPasswordController.text,
+      );
+      // Navigate to the next screen or perform any other actions
+      Navigator.pushNamed(context, '/navigation');
+    } catch (e) {
+      // Handle and display errors to the user
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +76,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          decoration: InputDecoration(
+                          controller: _firstNameController,
+                          decoration: const InputDecoration(
                               border: InputBorder.none, hintText: 'First Name'),
                         ),
                       ),
@@ -67,10 +96,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          decoration: InputDecoration(
+                          controller: _lastNameController,
+                          decoration: const InputDecoration(
                               border: InputBorder.none, hintText: 'Last Name'),
                         ),
                       ),
@@ -91,10 +121,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          decoration: InputDecoration(
+                          controller: _phoneNumberController,
+                          decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Phone number'),
                         ),
@@ -111,10 +142,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          decoration: InputDecoration(
+                          controller: _emailController,
+                          decoration: const InputDecoration(
                               border: InputBorder.none, hintText: 'Email'),
                         ),
                       ),
@@ -135,11 +167,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          controller: _passwordController,
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: InputBorder.none, hintText: 'Password'),
                         ),
                       ),
@@ -155,11 +188,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          controller: _confirmPasswordController,
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Confirm password'),
                         ),
@@ -179,7 +213,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/navigation');
+                    _register();
                   },
                   child: const Text(
                     '    Register    ',
