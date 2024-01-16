@@ -42,4 +42,16 @@ class AuthService {
       rethrow;
     }
   }
+
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      print('Error during login: ${e.message}');
+      rethrow;
+    }
+  }
 }
