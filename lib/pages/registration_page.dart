@@ -30,7 +30,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         confirmPassword: _confirmPasswordController.text,
       );
       // Navigate to the next screen or perform any other actions
-      Navigator.pushNamed(context, '/slide_page');
+      Navigator.pushNamed(context, '/main_page');
     } catch (e) {
       // Handle and display errors to the user
     }

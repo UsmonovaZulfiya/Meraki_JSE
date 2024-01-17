@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
       // Navigate to the next screen or perform any other actions
-      Navigator.pushNamed(context, '/slide_page');
+      Navigator.pushNamed(context, '/main_page');
     } catch (e) {
       print(e.toString());
       // Handle and display errors to the user
