@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/pages/main_page.dart';
 import 'package:untitled/pages/registration_page.dart';
 import 'pages/welcome_page.dart';
 import 'pages/login_page.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/adoption': (context) => AdoptionPage(),
         '/favorites': (context) => FavoritesPage(),
         '/recommendations': (context) => RecommendationsPage(),
+        '/main_screen': (context) => MainScreen(),
       },
     );
   }
