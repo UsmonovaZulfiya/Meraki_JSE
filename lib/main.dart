@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         '/adoption': (context) => AdoptionPage(),
         '/favorites': (context) => FavoritesPage(),
         '/recommendations': (context) => RecommendationsPage(),
-        '/main_screen': (context) => MainScreen(),
+        '/main_page': (context) => MainScreen(),
       },
     );
   }

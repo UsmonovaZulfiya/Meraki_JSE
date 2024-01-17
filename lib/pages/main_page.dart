@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
 import 'slide_page.dart';
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pet Categories',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainScreen(),
-    );
-  }
-}
+import 'package:untitled/dto/pet.dart';
 
 class MainScreen extends StatelessWidget {
   final List<Category> categories = [
@@ -23,6 +8,8 @@ class MainScreen extends StatelessWidget {
     Category(name: 'Cats', color: Colors.red),
     Category(name: 'Other Pets', color: Colors.yellow),
   ];
+
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +36,8 @@ class MainScreen extends StatelessWidget {
         ],
       ),
       body: GridView.builder(
-        padding: EdgeInsets.all(8),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        padding: const EdgeInsets.all(8),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
@@ -97,7 +84,7 @@ class CategoryItem extends StatelessWidget {
         child: Center(
           child: Text(
             category.name,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -141,7 +128,7 @@ class PetsListPage extends StatelessWidget {
             title: Text(pets[index].name),
             subtitle: Text('${pets
             [index].breed} | ${pets[index].age}'),
-            trailing: CircleAvatar(
+            trailing: const CircleAvatar(
               backgroundColor: Colors.black,
             ),
           );
@@ -152,10 +139,3 @@ class PetsListPage extends StatelessWidget {
   }
 }
 
-class Pet {
-  String name;
-  String breed;
-  String age;
-
-  Pet({required this.name, required this.breed, required this.age});
-}
