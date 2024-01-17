@@ -2,11 +2,17 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/pages/registration_screen.dart';
-import 'pages/welcome_screen.dart';
-import 'pages/login_screen.dart';
-import 'pages/navigation_screen.dart';
-import 'pages/pets_list_screen.dart';
+import 'package:untitled/pages/main_page.dart';
+import 'package:untitled/pages/registration_page.dart';
+import 'pages/welcome_page.dart';
+import 'pages/login_page.dart';
+import 'pages/slide_page.dart';
+import 'pages/search_page.dart';
+import 'pages/recommendations_page.dart';
+import 'pages/favorites_page.dart';
+import 'pages/profile_page.dart';
+import 'pages/adoption/adoption_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,8 +40,13 @@ class MyApp extends StatelessWidget {
         '/': (context) => const WelcomePage(),
         '/login': (context) => const LoginPage(),
         '/registration': (context) => const RegistrationPage(),
-        '/navigation': (context) => const NavigationPage(),
-        '/petlist': (context) => PetsListPage(),
+        '/slide_page': (context) => const SlidePage(),
+        '/profile': (context) => ProfilePage(),
+        '/search': (context) => SearchPage(),
+        '/adoption': (context) => AdoptionPage(),
+        '/favorites': (context) => FavoritesPage(),
+        '/recommendations': (context) => RecommendationsPage(),
+        '/main_page': (context) => MainScreen(),
       },
     );
   }
