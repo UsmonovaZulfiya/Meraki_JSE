@@ -123,8 +123,7 @@ class PetsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Here you would typically fetch the pets from a database or API
-    // For demonstration, we're using a static list
+
     final List<Pet> pets = List.generate(
       10,
           (index) => Pet(name: 'Pet $index', breed: 'Breed $index', age: 'Age $index'),
