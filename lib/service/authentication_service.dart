@@ -8,7 +8,7 @@ class AuthService {
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   // create user object based on FirebaseUser
-  MyUser? _userfromFirebase(User user){
+  MyUser? _userFromFirebase(User user){
     return user != null ? MyUser(uid: user.uid) : null;
   }
 
@@ -18,7 +18,7 @@ class AuthService {
 
   Stream<MyUser?> get user {
     return _auth.authStateChanges()
-        .map((User? user) => user != null ? _userfromFirebase(user) : null);
+        .map((User? user) => user != null ? _userFromFirebase(user) : null);
   }
 
   Future<void> register({
@@ -82,11 +82,21 @@ class AuthService {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
       //return user; // Return the FirebaseUser object
-      return _userfromFirebase(user!);
+      return _userFromFirebase(user!);
     } on FirebaseAuthException catch (e) {
       //TODO: handling of this exeption that can be due to invalid email or password
       print('Error during login: ${e.message}');
       rethrow;
+    }
+  }
+
+  Future sign_out() async{
+    try{
+      return await _auth.signOut();
+    }
+    catch(e){
+      print(e.toString());
+      return null;
     }
   }
 }

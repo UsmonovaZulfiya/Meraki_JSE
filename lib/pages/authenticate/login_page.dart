@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../dto/user.dart';
 import '../../service/authentication_service.dart';
@@ -41,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       if (user != null) {
         // Navigate to the main page if login is successful
         print("Success");
-        Navigator.pushNamed(context, '/main_page');
+        Navigator.pushReplacementNamed(context, '/main_page');
       } else {
         // Handle the situation where the user object is null
         // This could happen if the login method is modified to return null upon failure
@@ -169,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/registration');
+                    Navigator.pushReplacementNamed(context, '/registration');
                   },
                   child: const Text(
                     'Register now',

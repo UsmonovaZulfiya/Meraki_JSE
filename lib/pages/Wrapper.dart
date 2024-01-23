@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/dto/user.dart';
-import 'package:untitled/pages/authenticate/authenticate.dart';
+import 'package:untitled/pages/authenticate/welcome_page.dart';
+
+import 'main_page.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -9,9 +11,14 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<MyUser>(context);
-    print(user);
+    final user = Provider.of<MyUser?>(context);
+    print("Wrapper: Received user: $user");
 
-    return Authenticate();
+    if (user == null) {
+      return const WelcomePage();
+    }
+    else {
+      return MainScreen();
+    }
   }
 }
