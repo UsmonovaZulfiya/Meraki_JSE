@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../service/authentication_service.dart';
+import '../../dto/user.dart';
+import '../../service/authentication_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,17 +15,41 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  // Future<void> _login() async {
+  //   try {
+  //     await _authService.login(
+  //       email: _emailController.text,
+  //       password: _passwordController.text,
+  //     );
+  //     // Navigate to the next screen or perform any other actions
+  //     Navigator.pushNamed(context, '/main_page');
+  //   } catch (e) {
+  //     print(e.toString());
+  //     // Handle and display errors to the user
+  //   }
+  // }
+
   Future<void> _login() async {
     try {
-      await _authService.login(
+      MyUser? user = await _authService.login(
         email: _emailController.text,
         password: _passwordController.text,
       );
-      // Navigate to the next screen or perform any other actions
-      Navigator.pushNamed(context, '/main_page');
+
+      // Check if the user is not null
+      if (user != null) {
+        // Navigate to the main page if login is successful
+        print("Success");
+        Navigator.pushReplacementNamed(context, '/main_page');
+      } else {
+        // Handle the situation where the user object is null
+        // This could happen if the login method is modified to return null upon failure
+        print('Login failed: User is null');
+      }
     } catch (e) {
       print(e.toString());
       // Handle and display errors to the user
+      // Ideally, you would use a more user-friendly way to show the error, like a dialog or a snackbar
     }
   }
 
@@ -143,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/registration');
+                    Navigator.pushReplacementNamed(context, '/registration');
                   },
                   child: const Text(
                     'Register now',

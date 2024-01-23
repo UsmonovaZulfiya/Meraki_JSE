@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../service/authentication_service.dart';
+import '../../service/authentication_service.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -17,7 +17,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
 
   Future<void> _register() async {
     try {
@@ -30,7 +30,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         confirmPassword: _confirmPasswordController.text,
       );
       // Navigate to the next screen or perform any other actions
-      Navigator.pushNamed(context, '/main_page');
+      Navigator.pushReplacementNamed(context, '/navigation');
     } catch (e) {
       // Handle and display errors to the user
     }
@@ -239,7 +239,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   child: const Text(
                     'Log in now',
