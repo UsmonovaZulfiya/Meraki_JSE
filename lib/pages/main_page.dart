@@ -1,25 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:untitled/service/authentication_service.dart';
 import 'slide_page.dart';
 import 'package:untitled/dto/pet.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+
+  MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   final List<Category> categories = [
     Category(name: 'Dogs', color: Colors.green),
     Category(name: 'Cats', color: Colors.red),
     Category(name: 'Other Pets', color: Colors.yellow),
   ];
 
-  MainScreen({super.key});
+  final AuthService _auth = AuthService();
 
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      // This block will be executed when the back button is pressed.
+      if (Navigator.of(context).canPop()) {
+        // If there are any routes to pop, pop them.
+        return true;
+      } else {
+        // If there are no routes to pop, exit the app.
+        await SystemNavigator.pop();
+        return false;
+      }
+    },
+    child: Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Code to go back
-            Navigator.of(context).pop();
+          onPressed: () async{
+
+            await _auth.sign_out();
+            Navigator.of(context).pushReplacementNamed('/welcome');
           },
         ),
         title: Text('Categories'),
@@ -58,7 +80,8 @@ class MainScreen extends StatelessWidget {
           );
         },
       ),
-    );
+
+    ));
   }
 }
 
