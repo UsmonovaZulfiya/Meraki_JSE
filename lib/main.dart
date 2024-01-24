@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/dto/user.dart';
 import 'package:untitled/pages/Wrapper.dart';
+import 'package:untitled/pages/adoption/add_pet_page.dart';
 import 'package:untitled/pages/main_page.dart';
 import 'package:untitled/pages/authenticate/registration_page.dart';
+import 'package:untitled/pages/user_profile_page.dart';
 import 'package:untitled/service/authentication_service.dart';
 import 'pages/authenticate/welcome_page.dart';
 import 'pages/authenticate/login_page.dart';
@@ -54,9 +56,9 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginPage(),
           '/registration': (context) => const RegistrationPage(),
           '/slide_page': (context) => const SlidePage(),
-          '/profile': (context) => ProfilePage(),
+          '/profile': (context) => UserProfilePage(),
           '/search': (context) => SearchPage(),
-          '/adoption': (context) => AdoptionPage(),
+          '/adoption': (context) => AdoptionInputPage(),
           '/favorites': (context) => FavoritesPage(),
           '/recommendations': (context) => RecommendationsPage(),
           '/main_page': (context) => MainScreen(),

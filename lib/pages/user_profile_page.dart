@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/widgets/user_card_widget.dart';
 
+
 class UserProfilePage extends StatelessWidget {
-  final String userPhotoUrl = 'user_photo_url'; // Replace with actual photo URL
+  final String userPhotoUrl = 'https://cdn2.iconfinder.com/data/icons/veterinary-12/512/Veterinary_Icons-16-512.png'; // Replace with actual photo URL
   final String userName = 'John Doe'; // Replace with actual user name
   final String userEmail = 'john.doe@example.com'; // Replace with actual user email
   final String phoneNumber = '+1 123-456-7890'; // Replace with actual user phone number
@@ -39,7 +40,7 @@ class UserProfilePage extends StatelessWidget {
             SizedBox(height: 16.0),
 
             // Buttons List View
-            buildButtonsListView(),
+            buildButtonsListView(context),
           ],
         ),
       ),
@@ -47,7 +48,7 @@ class UserProfilePage extends StatelessWidget {
   }
 
   Widget buildAboutSection() {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -78,16 +79,19 @@ class UserProfilePage extends StatelessWidget {
     );
   }
 
-  Widget buildButtonsListView() {
+  Widget buildButtonsListView(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        buildElevatedButton('My Pets', () {
-          // Implement my pets logic
-        }),
-        buildElevatedButton('My Requests', () {
-          // Implement my requests logic
-        }),
+      ElevatedButton(
+      onPressed: () {Navigator.pushNamed(context, '/my_pets_page');},
+      child: Text('My pets'),
+    ),
+
+    ElevatedButton(
+    onPressed: () {Navigator.pushNamed(context, '/welcome');},
+    child: Text('My requests'),
+    ),
       ],
     );
   }
