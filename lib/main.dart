@@ -16,6 +16,8 @@ import 'pages/recommendations_page.dart';
 import 'pages/favorites_page.dart';
 import 'pages/profile_page.dart';
 import 'pages/adoption/adoption_page.dart';
+import 'pages/adoption/my_pets_page.dart';
+import 'pages/adoption/pet_profile_page.dart';
 
 
 void main() async {
@@ -58,6 +60,8 @@ class MyApp extends StatelessWidget {
           '/favorites': (context) => FavoritesPage(),
           '/recommendations': (context) => RecommendationsPage(),
           '/main_page': (context) => MainScreen(),
+          '/my_pets_page': (context) => MyPetsPage(),
+          '/pet_profile': (context) => PetProfilePage(),
         },
       ),
     );
