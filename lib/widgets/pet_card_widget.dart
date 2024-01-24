@@ -27,7 +27,7 @@ class PetCard extends StatelessWidget {
         children: [
           // Pet Image
           Container(
-            height: 150.0, // Set your desired height
+            height: 100.0, // Set your desired height
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
               image: DecorationImage(
@@ -45,9 +45,9 @@ class PetCard extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0),
                 ),
-                SizedBox(height: 4.0),
+                SizedBox(height: 2.0),
                 Text('$breed'),
                 Text('$age years'),
                 Text('$gender'),
