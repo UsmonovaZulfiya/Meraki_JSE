@@ -90,7 +90,7 @@ class AuthService {
     }
   }
 
-  Future sign_out() async{
+  Future signOut() async{
     try{
       return await _auth.signOut();
     }

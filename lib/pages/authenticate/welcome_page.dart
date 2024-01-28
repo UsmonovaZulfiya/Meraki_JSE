@@ -45,7 +45,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   child: const Text(
                     '         Log in         ',
@@ -69,7 +69,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     borderRadius: BorderRadius.circular(8.0)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/registration');
+                    Navigator.pushReplacementNamed(context, '/registration');
                   },
                   child: const Text(
                     '    Registration    ',

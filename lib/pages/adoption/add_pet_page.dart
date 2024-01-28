@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/widgets/input_widget.dart';
-
-class Pet {
-  String name;
-  int age;
-  String breed;
-  String gender;
-  String petType;
-  String petPhoto;
-  Map<String, String> medicalInfo;
-
-  Pet({
-    required this.name,
-    required this.age,
-    required this.breed,
-    required this.gender,
-    required this.petType,
-    required this.petPhoto,
-    required this.medicalInfo,
-  });
-}
+import 'package:untitled/dto/pet.dart';
+import 'package:untitled/service/database.dart';
+import '../../dto/user.dart';
 
 class AdoptionInputPage extends StatefulWidget {
   @override
@@ -42,9 +26,51 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
     breed: '',
     gender: '',
     petType: '',
-    petPhoto: '',
-    medicalInfo: {},
+    photoURL: '',
+    medicalInfo: '',
+    addInfo: '',
   );
+
+  Future<void> _addPet() async {
+    try {
+      final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+
+      DatabaseService? dbService;
+
+      if (userUid != null) {
+        dbService = DatabaseService(uid: userUid);
+      }
+
+      if (nameController.text.isEmpty ||
+          ageController.text.isEmpty ||
+          breedController.text.isEmpty ||
+          medicalInfoController.text.isEmpty ||
+          petType.isEmpty ||
+          gender.isEmpty) {
+        // Display an error message or handle it as appropriate
+        print('Please fill in all required fields.');
+        return;
+      }
+
+      // Save data to the Pet object
+      pet = Pet(
+        name: nameController.text,
+        age: int.parse(ageController.text),
+        breed: breedController.text,
+        gender: gender,
+        petType: petType,
+        photoURL: 'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg', // Replace with actual image URL
+        medicalInfo: medicalInfoController.text,
+        addInfo: additionalInfoController.text,
+      );
+
+      await dbService?.addPetData(pet);
+
+      Navigator.pushNamed(context, '/my_pets_page');
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +91,10 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(width: 2, color: Colors.grey),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(pet.petPhoto),
-                  ),
+                  // image: DecorationImage(
+                  //   fit: BoxFit.cover,
+                  //   image: NetworkImage(pet.photoURL),
+                  // ),
                 ),
               ),
 
@@ -103,11 +129,11 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
 
               // Dropdown field for pet type
               DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Pet Type',
                   border: OutlineInputBorder(),
                 ),
-                value: petType,
+                value: petType.isNotEmpty ? petType : null, // Ensure this matches an item or is null
                 items: ['Dog', 'Cat', 'Bird', 'Others'].map((String type) {
                   return DropdownMenuItem<String>(
                     value: type,
@@ -119,7 +145,9 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                     petType = value ?? '';
                   });
                 },
+                hint: Text('Select a pet type'), // Displayed if the current value is null
               ),
+
 
               SizedBox(height: 16),
 
@@ -133,11 +161,11 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
 
               // Dropdown field for gender
               DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Gender',
                   border: OutlineInputBorder(),
                 ),
-                value: gender,
+                value: gender.isNotEmpty ? gender : null, // Ensure this matches an item or is null
                 items: ['Male', 'Female'].map((String gen) {
                   return DropdownMenuItem<String>(
                     value: gen,
@@ -149,6 +177,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                     gender = value ?? '';
                   });
                 },
+                hint: Text('Select a gender'), // Displayed if the current value is null
               ),
 
               SizedBox(height: 16),
@@ -182,37 +211,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                   SizedBox(width: 16),
                   ElevatedButton(
                     onPressed: () {
-                      // Implement logic for add pet button
-
-                      // Input validation
-                      if (nameController.text.isEmpty ||
-                          ageController.text.isEmpty ||
-                          breedController.text.isEmpty ||
-                          medicalInfoController.text.isEmpty ||
-                          petType.isEmpty ||
-                          gender.isEmpty) {
-                        // Display an error message or handle it as appropriate
-                        print('Please fill in all required fields.');
-                        return;
-                      }
-
-                      // Save data to the Pet object
-                      pet = Pet(
-                        name: nameController.text,
-                        age: int.parse(ageController.text),
-                        breed: breedController.text,
-                        gender: gender,
-                        petType: petType,
-                        petPhoto: '', // Replace with actual image URL
-                        medicalInfo: {
-                          'info': medicalInfoController.text,
-                        },
-                      );
-
-                      // Do something with the pet data (e.g., save to database)
-                      // For now, just print the pet details
-                      //print('Pet Details: ${pet.name}, ${pet.age}, ${pet.breed}, ${pet.gender}, ${pet.petType}, ${pet.petPhoto}, ${pet.medicalInfo}');
-                      Navigator.pushNamed(context, '/my_pets_page');
+                      _addPet();
                     },
                     child: Text('Add Pet'),
                   ),

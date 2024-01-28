@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/service/authentication_service.dart';
 import 'package:untitled/widgets/user_card_widget.dart';
 
 
@@ -7,6 +8,8 @@ class UserProfilePage extends StatelessWidget {
   final String userName = 'John Doe'; // Replace with actual user name
   final String userEmail = 'john.doe@example.com'; // Replace with actual user email
   final String phoneNumber = '+1 123-456-7890'; // Replace with actual user phone number
+
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +70,13 @@ class UserProfilePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        buildElevatedButton('Log Out', () {
-          // Implement log out logic
-          // Navigate to the welcome page
-          Navigator.pushNamedAndRemoveUntil(context, '/welcome', (route) => false);
+        buildElevatedButton('Log Out', () async {
+          try {
+            await authService.signOut();
+            Navigator.pushNamedAndRemoveUntil(context, '/welcome', (route) => false);
+          } catch (e) {
+            // Handle the error or display a message to the user
+          }
         }),
         buildElevatedButton('Edit Profile', () {
           // Implement edit profile logic

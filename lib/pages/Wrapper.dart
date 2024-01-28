@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/dto/user.dart';
 import 'package:untitled/pages/authenticate/welcome_page.dart';
+import 'package:untitled/pages/main_page.dart';
 
-import 'main_page.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -18,7 +18,7 @@ class Wrapper extends StatelessWidget {
       return const WelcomePage();
     }
     else {
-      return MainScreen();
+      return MainPage();
     }
   }
 }

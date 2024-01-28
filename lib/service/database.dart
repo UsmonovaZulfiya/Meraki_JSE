@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:untitled/dto/pet.dart';
 
 class DatabaseService {
 
@@ -17,13 +18,17 @@ class DatabaseService {
     });
   }
 
-  Future updatePetData(String name, String breed, int age, String medical_info, bool gender) async{
+  Future addPetData(Pet pet) async{
     return await petCollection.doc(uid).set({
-      'name': name,
-      'breed': breed,
-      'age': age,
-      'medical_info': medical_info,
-      'gender': gender,
+      'name': pet.name,
+      'age': pet.age,
+      'breed': pet.breed,
+      'gender': pet.gender,
+      'petType': pet.petType,
+      'photo': pet.photoURL,
+      'medical_info': pet.medicalInfo,
+      'additional_info': pet.addInfo,
+      'ownerUID': uid,
     });
   }
 
