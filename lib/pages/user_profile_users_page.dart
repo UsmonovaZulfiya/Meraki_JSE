@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/widgets/user_card_widget.dart';
 
-
 class UserProfilePage extends StatelessWidget {
   final String photoUrl = 'https://cdn2.iconfinder.com/data/icons/veterinary-12/512/Veterinary_Icons-16-512.png'; // Replace with actual photo URL
   final String userName = 'John Doe'; // Replace with actual user name
@@ -31,16 +30,6 @@ class UserProfilePage extends StatelessWidget {
 
             // About Section
             buildAboutSection(),
-
-            SizedBox(height: 16.0),
-
-            // Buttons Row
-            buildButtonsRow(context),
-
-            SizedBox(height: 16.0),
-
-            // Buttons List View
-            buildButtonsListView(context),
           ],
         ),
       ),
@@ -60,46 +49,6 @@ class UserProfilePage extends StatelessWidget {
           'Lorem ipsum dolor sit amet.',
         ),
       ],
-    );
-  }
-
-  Widget buildButtonsRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        buildElevatedButton('Log Out', () {
-          // Implement log out logic
-          // Navigate to the welcome page
-          Navigator.pushNamedAndRemoveUntil(context, '/welcome', (route) => false);
-        }),
-        buildElevatedButton('Edit Profile', () {
-          // Implement edit profile logic
-        }),
-      ],
-    );
-  }
-
-  Widget buildButtonsListView(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-      ElevatedButton(
-      onPressed: () {Navigator.pushNamed(context, '/my_pets_page');},
-      child: Text('My pets'),
-    ),
-
-    ElevatedButton(
-    onPressed: () {Navigator.pushNamed(context, '/welcome');},
-    child: Text('My requests'),
-    ),
-      ],
-    );
-  }
-
-  Widget buildElevatedButton(String label, VoidCallback onPressed) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: Text(label),
     );
   }
 }

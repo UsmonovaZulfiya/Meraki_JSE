@@ -9,6 +9,7 @@ class Pet {
   String petType;
   String petPhoto;
   Map<String, String> medicalInfo;
+  String additionalInfo;
 
   Pet({
     required this.name,
@@ -18,6 +19,7 @@ class Pet {
     required this.petType,
     required this.petPhoto,
     required this.medicalInfo,
+    required this.additionalInfo,
   });
 }
 
@@ -44,6 +46,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
     petType: '',
     petPhoto: '',
     medicalInfo: {},
+    additionalInfo: '',
   );
 
   @override
@@ -207,6 +210,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                         medicalInfo: {
                           'info': medicalInfoController.text,
                         },
+                        additionalInfo: additionalInfoController.text,
                       );
 
                       // Do something with the pet data (e.g., save to database)
