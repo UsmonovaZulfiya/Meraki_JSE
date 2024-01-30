@@ -19,7 +19,7 @@ class DatabaseService {
   }
 
   Future addPetData(Pet pet) async{
-    return await petCollection.doc(uid).set({
+    return await petCollection.add({
       'name': pet.name,
       'age': pet.age,
       'breed': pet.breed,
@@ -34,6 +34,17 @@ class DatabaseService {
 
   Stream<QuerySnapshot> get pets {
     return petCollection.snapshots();
+  }
+
+  Future<List<Pet>> fetchUserPets() async {
+    List<Pet> userPets = [];
+    try {
+      final QuerySnapshot result = await petCollection.where('ownerUID', isEqualTo: uid).get();
+      userPets = result.docs.map((doc) => Pet.fromDocumentSnapshot(doc)).toList();
+    } catch (e) {
+      print(e.toString());
+    }
+    return userPets;
   }
 
 }

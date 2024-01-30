@@ -91,6 +91,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(width: 2, color: Colors.grey),
+                  //TODO: implement photo adding and storing in firebase storage
                   // image: DecorationImage(
                   //   fit: BoxFit.cover,
                   //   image: NetworkImage(pet.photoURL),
@@ -203,7 +204,6 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Implement logic for cancel button
                       Navigator.pop(context);
                     },
                     child: Text('Cancel'),
