@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/widgets/pet_card_widget.dart';
+import 'package:untitled/widgets/my_requests_pet_card.dart';
 
 class MyRequestsPage extends StatelessWidget {
-  final List<Map<String, dynamic>> myPets = [
+  final List<Map<String, dynamic>> myRequestsPetCard = [
     // Replace with actual data
     {
       'image': 'pet_image_url_1',
@@ -41,7 +41,7 @@ class MyRequestsPage extends StatelessWidget {
                   crossAxisSpacing: 8.0,
                   mainAxisSpacing: 8.0,
                 ),
-                itemCount: myPets.length,
+                itemCount: myRequestsPetCard.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
@@ -50,22 +50,22 @@ class MyRequestsPage extends StatelessWidget {
                         context,
                         '/pet_profile',
                         arguments: {
-                          'image': myPets[index]['image'],
-                          'name': myPets[index]['name'],
-                          'breed': myPets[index]['breed'],
-                          'age': myPets[index]['age'],
-                          'gender': myPets[index]['gender'],
+                          'image': myRequestsPetCard[index]['image'],
+                          'name': myRequestsPetCard[index]['name'],
+                          'breed': myRequestsPetCard[index]['breed'],
+                          'age': myRequestsPetCard[index]['age'],
+                          'gender': myRequestsPetCard[index]['gender'],
                         },
                       );
                     },
-                    child: PetCard(
-                      image: myPets[index]['image'],
-                      name: myPets[index]['name'],
-                      breed: myPets[index]['breed'],
-                      age: myPets[index]['age'],
-                      gender: myPets[index]['gender'],
-                      requestSent: myPets[index]['requestSent'],
-                      requestAccepted: myPets[index]['requestAccepted'],
+                    child: MyRequestsPetCard(
+                      image: myRequestsPetCard[index]['image'],
+                      name: myRequestsPetCard[index]['name'],
+                      breed: myRequestsPetCard[index]['breed'],
+                      age: myRequestsPetCard[index]['age'],
+                      gender: myRequestsPetCard[index]['gender'],
+                      requestSent: myRequestsPetCard[index]['requestSent'],
+                      requestAccepted: myRequestsPetCard[index]['requestAccepted'],
                     ),
                   );
                 },

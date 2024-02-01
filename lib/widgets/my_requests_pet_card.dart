@@ -1,20 +1,34 @@
 import 'package:flutter/material.dart';
 
-class PetCard extends StatelessWidget {
+class MyRequestsPetCard extends StatelessWidget {
   final String image;
   final String name;
   final String breed;
   final int age;
   final String gender;
+  final bool requestSent;
+  final bool requestAccepted;
 
-  PetCard({
+  MyRequestsPetCard({
     required this.image,
     required this.name,
     required this.breed,
     required this.age,
     required this.gender,
+    this.requestSent = false,
+    this.requestAccepted = false,
   });
 
+  // Conditional Status
+  Widget buildStatus() {
+    if (requestSent) {
+      return Text('Status: Sent');
+    } else if (requestAccepted) {
+      return Text('Status: Accepted');
+    } else {
+      return Container(); // Empty container if no status to display
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +69,9 @@ class PetCard extends StatelessWidget {
               ],
             ),
           ),
+
+          // Display Status
+          buildStatus(),
         ],
       ),
     );
