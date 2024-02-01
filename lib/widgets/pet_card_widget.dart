@@ -6,6 +6,8 @@ class PetCard extends StatelessWidget {
   final String breed;
   final int age;
   final String gender;
+  final bool requestSent;
+  final bool requestAccepted;
 
   PetCard({
     required this.image,
@@ -13,7 +15,20 @@ class PetCard extends StatelessWidget {
     required this.breed,
     required this.age,
     required this.gender,
+    this.requestSent = false,
+    this.requestAccepted = false,
   });
+
+  // Conditional Status
+  Widget buildStatus() {
+    if (requestSent) {
+      return Text('Status: Sent');
+    } else if (requestAccepted) {
+      return Text('Status: Accepted');
+    } else {
+      return Container(); // Empty container if no status to display
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +42,7 @@ class PetCard extends StatelessWidget {
         children: [
           // Pet Image
           Container(
-            height: 100.0, // Set your desired height
+            height: 100.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
               image: DecorationImage(
@@ -54,6 +69,9 @@ class PetCard extends StatelessWidget {
               ],
             ),
           ),
+
+          // Display Status
+          buildStatus(),
         ],
       ),
     );

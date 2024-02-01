@@ -10,6 +10,8 @@ class MyRequestsPage extends StatelessWidget {
       'breed': 'Golden Retriever',
       'age': 2,
       'gender': 'Female',
+      'requestSent': true,
+      'requestAccepted': false,
     },
     {
       'image': 'pet_image_url_2',
@@ -17,6 +19,8 @@ class MyRequestsPage extends StatelessWidget {
       'breed': 'Beagle',
       'age': 3,
       'gender': 'Male',
+      'requestSent': false,
+      'requestAccepted': true,
     },
     // Add more pet data as needed
   ];
@@ -27,65 +31,48 @@ class MyRequestsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Requests'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Two cards in each row
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
+      body: SingleChildScrollView( // Wrap your Column with SingleChildScrollView
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                ),
+                itemCount: myPets.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to pet profile page using named route and pass pet details as arguments
+                      Navigator.pushNamed(
+                        context,
+                        '/pet_profile',
+                        arguments: {
+                          'image': myPets[index]['image'],
+                          'name': myPets[index]['name'],
+                          'breed': myPets[index]['breed'],
+                          'age': myPets[index]['age'],
+                          'gender': myPets[index]['gender'],
+                        },
+                      );
+                    },
+                    child: PetCard(
+                      image: myPets[index]['image'],
+                      name: myPets[index]['name'],
+                      breed: myPets[index]['breed'],
+                      age: myPets[index]['age'],
+                      gender: myPets[index]['gender'],
+                      requestSent: myPets[index]['requestSent'],
+                      requestAccepted: myPets[index]['requestAccepted'],
+                    ),
+                  );
+                },
               ),
-              itemCount: myPets.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to pet profile page using named route and pass pet details as arguments
-                    Navigator.pushNamed(
-                      context,
-                      '/pet_profile',
-                      arguments: {
-                        'image': myPets[index]['image'],
-                        'name': myPets[index]['name'],
-                        'breed': myPets[index]['breed'],
-                        'age': myPets[index]['age'],
-                        'gender': myPets[index]['gender'],
-                      },
-                    );
-                  },
-                  child: PetCard(
-                    image: myPets[index]['image'],
-                    name: myPets[index]['name'],
-                    breed: myPets[index]['breed'],
-                    age: myPets[index]['age'],
-                    gender: myPets[index]['gender'],
-                  ),
-                );
-              },
             ),
-          ),
-
-          // Sent and Accept Buttons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Implement logic for Sent button
-                  // ...
-                },
-                child: Text('Sent'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement logic for Accept button
-                  // ...
-                },
-                child: Text('Accepted'),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
