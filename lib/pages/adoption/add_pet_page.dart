@@ -21,6 +21,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
   String petType = '';
 
   Pet pet = Pet(
+    id: '',
     name: '',
     age: 0,
     breed: '',
@@ -54,6 +55,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
 
       // Save data to the Pet object
       pet = Pet(
+        id: ' ',
         name: nameController.text,
         age: int.parse(ageController.text),
         breed: breedController.text,

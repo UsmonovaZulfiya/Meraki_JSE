@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           '/recommendations': (context) => RecommendationsPage(),
           '/main_page': (context) => MainPage(),
           '/my_pets_page': (context) => MyPetsPage(),
-          '/pet_profile': (context) => PetProfilePage(),
+          '/pet_profile': (context) => PetProfilePage(petId: '',),
           '/my_requests_page': (context) => MyRequestsPage(),
         },
     );

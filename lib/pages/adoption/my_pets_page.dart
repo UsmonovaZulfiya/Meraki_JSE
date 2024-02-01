@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled/pages/adoption/pet_details_view_user.dart';
+import 'package:untitled/pages/adoption/pet_profile_page.dart';
 import 'package:untitled/widgets/pet_card_widget.dart';
 
 import '../../dto/pet.dart';
@@ -90,19 +92,20 @@ class _MyPetsPageState extends State<MyPetsPage> {
       dbService = DatabaseService(uid: userUid);
     }
 
+    //TODO: add message showing when there are no pets
     return Scaffold(
-      appBar: AppBar(title: Text('My Pets')),
+      appBar: AppBar(title: const Text('My Pets')),
       body: FutureBuilder<List<Pet>>(
         future: dbService?.fetchUserPets(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
             final pets = snapshot.data ?? [];
             return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
@@ -110,14 +113,35 @@ class _MyPetsPageState extends State<MyPetsPage> {
               itemCount: pets.length,
               itemBuilder: (context, index) {
                 final pet = pets[index];
-                return PetCard(
-                  image: pet.photoURL,
-                  name: pet.name,
-                  breed: pet.breed,
-                  age: pet.age,
-                  gender: pet.gender,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PetProfilePage(petId: pet.id), // Assuming `pet.id` holds the pet's ID
+                      ),
+                    );
+                  },
+                  child: PetCard(
+                    image: pet.photoURL,
+                    name: pet.name,
+                    breed: pet.breed,
+                    age: pet.age,
+                    gender: pet.gender,
+                  ),
                 );
               },
+
+              // itemBuilder: (context, index) {
+              //   final pet = pets[index];
+              //   return PetCard(
+              //     image: pet.photoURL,
+              //     name: pet.name,
+              //     breed: pet.breed,
+              //     age: pet.age,
+              //     gender: pet.gender,
+              //   );
+              // },
             );
           }
         },

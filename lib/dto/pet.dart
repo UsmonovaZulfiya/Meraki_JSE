@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Pet {
+  String id;
   String name;
   int age;
   String breed;
@@ -11,6 +12,7 @@ class Pet {
   String addInfo;
 
   Pet({
+    required this.id,
     required this.name,
     required this.age,
     required this.breed,
@@ -21,9 +23,9 @@ class Pet {
     required this.addInfo,
   });
 
-  // Constructor that creates a Pet object from a Firestore document
   Pet.fromDocumentSnapshot(DocumentSnapshot doc)
-      : name = doc['name'],
+      : id = doc.id,
+        name = doc['name'],
         age = doc['age'],
         breed = doc['breed'],
         gender = doc['gender'],
@@ -31,5 +33,4 @@ class Pet {
         photoURL = doc['photo'],
         medicalInfo = doc['medical_info'],
         addInfo = doc['additional_info'] {}
-    // Initialize other fields based on the document
 }
