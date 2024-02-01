@@ -8,40 +8,40 @@ class RecommendationsPage extends StatefulWidget {
   State<RecommendationsPage> createState() => _RecommendationsPageState();}
 
 
-  class _RecommendationsPageState extends State<RecommendationsPage> {
+class _RecommendationsPageState extends State<RecommendationsPage> {
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
+    return Scaffold(
 
-  appBar: AppBar(
-  title: Text('Recommendations for pets'),
-  ),
-  body: GridView.count(
-  crossAxisCount: 2,
-  padding: const EdgeInsets.all(8.0),
-  children: <Widget>[
-  buildCategoryCard(context, 'Recommendations for Dogs', 'dogs'),
-  buildCategoryCard(context, 'Recommendations for Cats', 'cats'),
-  ],
-  ),
-  );
+      appBar: AppBar(
+        title: Text('Recommendations for pets'),
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: const EdgeInsets.all(8.0),
+        children: <Widget>[
+          buildCategoryCard(context, 'Recommendations for Dogs', 'dogs'),
+          buildCategoryCard(context, 'Recommendations for Cats', 'cats'),
+        ],
+      ),
+    );
   }
 
   Widget buildCategoryCard(BuildContext context, String title, String animalType) {
-  return Card(
-  child: InkWell(
-  onTap: () {
-  Navigator.push(
-  context,
-  MaterialPageRoute(
-  builder: (context) => CareDetailsPage(animalType: animalType),
-  ),
-  );
-  },
-  child: Center(
-  child: Text(title),
-  ),
-  ),
-  );
+    return Card(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CareDetailsPage(animalType: animalType),
+            ),
+          );
+        },
+        child: Center(
+          child: Text(title),
+        ),
+      ),
+    );
   }
-  }
+}
