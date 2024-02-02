@@ -13,7 +13,7 @@ class DatabaseService {
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
   final CollectionReference requestCollection =
-      FirebaseFirestore.instance.collection('pet_adoption_request');
+      FirebaseFirestore.instance.collection('requests');
 
   //USER functions
   Future updateUserData(
@@ -91,7 +91,7 @@ class DatabaseService {
           await requestCollection.where('petID', isEqualTo: petID).get();
       print(result.docs.length);
       print(result.docs[0].data());
-      userIDs = result.docs.map((doc) => doc['userId'] as String).toList();
+      userIDs = result.docs.map((doc) => doc['userID'] as String).toList();
     } catch (e) {
       print(e.toString());
     }
