@@ -306,18 +306,7 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 
 ## *Black Box Testing* 
-
-
-
-
-
-
-
-
-
-
-
-   
+![bbtesting](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/a888c742-237c-4979-b8c9-00463e4675dd)
 
 
 
