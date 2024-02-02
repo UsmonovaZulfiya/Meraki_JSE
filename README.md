@@ -224,7 +224,10 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 #### Here you can see our wireframe diagram, on the next page more detailed one in Figma that is close to the final design.
 
+![drawing](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/740c46fd-728e-4105-9cbf-5ef6f40a69b0) 
 
+
+![app](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/91c5453a-2717-47f0-afaf-66a8265e751e) 
 
 
 ### *3. Technical Feasibility & Back-End Assessment*
