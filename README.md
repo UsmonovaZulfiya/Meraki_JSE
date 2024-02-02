@@ -234,6 +234,8 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 #### At this stage, we decided to use Firebase to support our background as it is usually done on most applications, it is easy to use (however we have faced a lot of trouble while configuring our project to Firebase and spent a lot of time on fixing it), it provides cloud-firestore (that we have used as NoSQL database) and authentication(particularly email/password sign-in method). Here you can see the initial ER diagram of our database that helped to figure out a lot of moments in the backend, but in Firebase cloud-firestore we are making use of collections and documents:
 
+![dbofapp](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/8fc4fc0f-5c27-4b84-8071-f046e28447a0) 
+
 
 ### *4. Prototyping*
 
@@ -254,6 +256,57 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ### *7. Testing*
 
 #### We have discussed this part in the Black box testing section. 
+
+
+
+## **Application Portability**
+
+#### Mobile application portability means that an application can be installed, used, and supported easily on different host environments without needing to change the code. Applications must be portable, in a world where there are multiple mobile operating systems like Android, iOS, and others. A portable application can seamlessly adapt to different hardware, screen sizes, resolutions, and operating system features. This can be beneficial, as it reduces complexity and maintenance costs. Additionally, our app can reach a wider audience and market.
+
+#### How to make an app portable for a wide range of devices? Cross-platform development tools and frameworks are a popular way to ensure mobile app portability. These software solutions enable us to write our app code once and run it on multiple platforms, such as iOS, Android, etc. Below, we have listed some strategies to enhance mobile app portability:
+
+#### 1. Use of Support Libraries and Frameworks: Portability can be substantially improved by using cross-platform frameworks such as React Native, Flutter, or Xamarin. With the help of these frameworks, we can create code only once and have it deployed with little modification across a variety of platforms (including iOS and Android).
+#### 2. Responsive and Adaptive Screen Layouts: It's crucial to create UIs that are both responsive and adaptable. This implies that the user interface of the application ought to adapt to various screen sizes and resolutions on its own. Relative layouts and scalable units (such as percentages or ems) on Android and Auto Layout in iOS can be used to do this.
+#### 3. Testing on Multiple Devices: Thorough testing across a range of devices and screen sizes can guarantee that the program runs reliably on a variety of hardware.
+
+#### For specific solutions, we can use external sources such as online developer communities (stack overflow), tech blogs and articles (medium, dev.to and etc.), and official framework docs to enhance mobile app portability
+
+
+## **System and Hardware Requirements**
+
+### *Operating System:*
+#### The app may require a minimum version of Android (e.g., Android 6.0 and above) for compatibility.
+
+### *Processor:*
+#### A modern processor with a clock speed of at least 1.5 GHz is recommended for this app.
+
+### *Memory (RAM):*
+#### A minimum of 2 GB of RAM is required for smooth performance.
+#### Recommended 3 GB or more for optimal experience.
+
+### *Storage Space:*
+#### Minimum (--) MB of available storage space for app installation.
+#### Recommend additional storage space for user-generated content, such as images and saved data.
+
+### *Connectivity:*
+#### A stable internet connection is recommended for features such as real-time updates, and image uploads.
+
+### *Minimum Network Speed:*
+#### The app should be designed to work with 3G or 4G/LTE networks.
+
+### *Minimum Camera Resolution:*
+#### A minimum of 8 MP (megapixels) is considered reasonable for pet profile images.
+
+
+### *SDK environment:*
+#### sdk: '>=3.1.5 <4.0.0'
+
+#### This means our Flutter project requires Dart SDK version 3.1.5 or later, but less than 4.0.0. This information indicates the range of Dart SDK versions that are compatible with your Flutter project.
+
+
+
+## *Black Box Testing* 
+
 
 
 
