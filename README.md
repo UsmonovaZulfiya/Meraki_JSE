@@ -25,12 +25,12 @@ Easily navigate through our intuitive app layout to search for pets available fo
 
 ### 2. Comprehensive Pet Profiles
 
-View detailed profiles of pets, including images, descriptions, age, breed, temperament, and
+View detailed profiles of pets, including images, descriptions, age, breed, health record, and
 adoption requirements.
 
 ### 3. Search and Filter Options
 
-Refine your search based on species, breed, age, size, location, and more to find the perfect pet
+Refine your search based on species and breed, also search for in the catalog with provided information about pets' age, size, and more to find the perfect pet
 match.
 
 ### 4. Adoption Process
@@ -40,22 +40,15 @@ contacting shelters/rescue organizations.
 
 ### 5. Personalized User Accounts
 
-Create user profiles to save favorite pets, track adoption applications, and manage communication
-with shelters.
+Create user profiles to save favorite pets, track adoption applications, and manage communication details with shelters.
 
-### 6. Notifications
-
-Receive updates on new pets available for adoption, application status, and other important alerts.
-
-### 7. Educational Resources
+### 6. Educational Resources
 
 Access helpful articles, tips, and guidelines on pet care, training, and responsible ownership.
 
 
 <!--Blockquotes-->
-> ## *Our Pet Adoption App strives to make the adoption journey a rewarding and seamless experience
-for both pets and adopters. Join us in making a difference in the lives of animals by finding your
-new best friend through our app!*
+> ## *Our Pet Adoption App strives to make the adoption journey a rewarding and seamless experience for both pets and adopters. Join us in making a difference in the lives of animals by finding your new best friend through our app!*
 
 ## **Installation**
 
@@ -85,42 +78,38 @@ new best friend through our app!*
 
 <!--OL-->
 
-1. From the homepage or dedicated search section, use filters like species, breed, age, location,
-   etc., to refine your pet search.
+1. From the homepage or dedicated search section, use filter like species and breed, also you can use the catalog where there are more information about pets' ages, picture health records, etc., to refine your pet search.
 1. Click on individual pet profiles to view detailed information and photos.
 
 ## 3. Adoption Process
 
 ### Application Submission:
 
-1. When you find a pet you're interested in, click on the "Adopt Me" or "Apply for Adoption" button
+1. When you find a pet you're interested in, click on the "Adopt" button
    on the pet's profile.
-1. Complete the adoption application form, providing necessary details as requested.
-1. Submit the application.
+1. Complete the adoption application form, providing the necessary details as requested.
+1. Submit the request.
 
 ### Contacting Shelters/Organizations:
 
-1. Use provided contact information to get in touch with the shelter/rescue organization.
-1. Communicate inquiries or express interest in a specific pet.
+1. Use the provided contact information to get in touch with the shelter/rescue organization.
 
 ## 4. User Profile Management
 
 ### Saving Favorites:
 
-1. While browsing pets, click on the "Add to Favorites" or similar button on desired pet profiles.
+1. When browsing pets, click the "Add to Favorites" or similar button on desired pet profiles.
 1. View saved favorites in your user profile section.
 
 ### Tracking Applications:
 
 1. Check the status of your adoption applications in your profile/dashboard.
-1. Receive notifications or updates regarding application progress.
 
 ## 5. Notifications and Alerts
 
 ### Opt-In for Notifications:
 
 1. Access the app settings or notification preferences section.
-1. Customize your notification preferences for new pets, application status updates, etc.
 
 ## 6. Additional Features
 
@@ -129,25 +118,25 @@ new best friend through our app!*
 1. Explore the resources section for articles, tips, and guides on pet care and adoption.
 1. Access helpful content to enhance your pet ownership experience.
 
-## **FEATURES**
+## **Features**
 
 ### 1. User Registration and Profiles
 
 <!--UL-->
 
 * **User Registration:** Easy sign-up process for creating user accounts.
-* **User Profiles:** Personalized profiles allowing users to manage their information, preferences,
+* **User Profiles:** Personalized profiles allow users to manage their information, preferences,
   and saved favorites.
 
 ### 2. Search and Filter Functionality
 
-* **Advanced Search:** Robust search options by species, breed, age, size, location, etc.
-* **Filters:** Customizable filters to refine pet searches based on specific criteria.
+* **Advanced Search:** Robust search options by species and breed.
+* **Filters:** Customizable filters to refine pet searches based on specific criteria(breed).
 
 ### 3. Comprehensive Pet Listings
 
 * **Detailed Pet Profiles:** Detailed information about pets available for adoption, including
-  photos, descriptions, breed, age, temperament, and adoption requirements.
+  photos, descriptions, breed, age, health record, and adoption requirements.
 * **Compatibility Matching:** Matching algorithm to suggest pets that align with user preferences
   and lifestyle.
 
@@ -155,12 +144,12 @@ new best friend through our app!*
 
 * **Application Submission:** Seamless process for submitting adoption applications directly through
   the app.
-* **Communication Tools:** In-app contact details for connecting with shelters/rescue organizations.
+* **Communication:** In-app contact details for connecting with shelters/rescue organizations.
 
 ### 5. User Interaction and Engagement
 
 * **Favorites List:** Ability to save favorite pets for future reference.
-* **Application Tracking:** Track the status of adoption applications and receive updates.
+* **Application Tracking:** Track the status of adoption applications and updates.
 
 ### 6. Notifications and Alerts
 
@@ -173,17 +162,51 @@ new best friend through our app!*
 
 * **Pet Care Tips:** Access to articles, guides, and educational resources on pet care, training,
   and responsible ownership.
-* **Support and Assistance:** Information on how to seek support, report issues, or get help
-  regarding the app or adoption process.
 
 ### 8. Admin Panel (if applicable)
 
 * **Admin Features:**  Backend management tools for shelters or administrators to manage pet
   listings, applications, and user interactions.
 
+## **Requirements Catalog**
+
+### These requirements serve as a foundation for developing a mobile app that facilitates the adoption process of abandoned pets, providing a positive experience for both users and the animals involved.
+
+### *User Registration:* 
+#### Users should be able to create accounts, providing necessary information like their full name, phone number, and email.
+
+### *Browse and Search:*
+#### Users should be able to browse and search for (abandoned) pets based on breed criteria.
+
+### *Pet Details:*
+#### Detailed profiles for each pet should be available, including images, descriptions, health status, etc.
+
+### *Adoption Application:*
+#### Users should be able to submit adoption applications or requests for specific pets.
+
+### *Adoption Status Tracking:*
+#### Users should be able to track the status of their adoption applications, from request to approval or rejection.
+
+### *Communication:*
+#### Provided contact information to facilitate communication between potential adopters and pet shelters or foster homes.
+
+
+## UML Activity Diagrams 
+
+
+   
+
+
+
+
 ## **Technologies used**
 
 ## **Contributing**
+
+### Sabrina(Front-end) - Welcome page, Login page, Registration Page, Navigation Page
+### Madina(Full stack) - pet page, pet's list page, adoption page
+### Zulfiya(Back end) - database design (using Springboot and MySQL), GitHub management, testing, planning
+### Dilnoza(QA Engineer) - UI design, Documentation, Readme file, Testing
 
 ## **Authors**
 
@@ -191,25 +214,11 @@ new best friend through our app!*
 
 | Name                  | Email            |
 |-----------------------|------------------|
-| Dilnoza Seydametova   | 2110014@newuu.uz |
-| Sabrina Musabaeva     | 2110166@newuu.uz |
-| Madina Shermakhmadova | 2110067@newuu.uz |
-| Zulfiya Usmonova      | 2110141@newuu.uz |
+| Dilnoza Seydametova   | 210014@newuu.uz |
+| Sabrina Musabaeva     | 210166@newuu.uz |
+| Madina Shermakhmadova | 210067@newuu.uz |
+| Zulfiya Usmonova      | 210141@newuu.uz |
 
-## **License**
-
-## **Acknowledgements**
 
 ## **Support**
 
-Responsibilities:
-Sabrina - front end
-Madina - full stack
-Zulfiya - back end
-Dilnoza - UI/UX and QA
-
-Contribution:
-Sabrina - Welcome page, Login page, Registration Page, Navigation Page
-Madina - pet page, pet's list page, adoption page
-Zulfiya - database design (using springboot and mysql), github management, testing, planning
-Dilnoza - UI design, Readme file
