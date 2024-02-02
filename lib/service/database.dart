@@ -85,4 +85,16 @@ class DatabaseService {
     }
     return pets;
   }
+
+  Future<List<Pet>> fetchPetsByBreed(String breed) async {
+    List<Pet> petsByBreed = [];
+    try {
+      final QuerySnapshot result = await petCollection.where('breed', isEqualTo: breed).get();
+      petsByBreed = result.docs.map((doc) => Pet.fromDocumentSnapshot(doc)).toList();
+    } catch (e) {
+      print(e.toString());
+    }
+    return petsByBreed;
+  }
+
   }

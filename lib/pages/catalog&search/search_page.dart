@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/widgets/pet_card_widget.dart';
+import 'package:untitled/pages/adoption/pet_details_view_user.dart';
+
+import '../../dto/pet.dart';
+import '../../dto/user.dart';
+import '../../service/database.dart';
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   _PetSearchPageState createState() => _PetSearchPageState();
 }
 
 class _PetSearchPageState extends State<SearchPage> {
   String searchQuery = '';
+  List<Pet> pets = [];
 
-  void performSearch(String query) {
-    setState(() {
-      searchQuery = query;
-    });
+  late DatabaseService dbService;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
   }
 
-  List<Map<String, dynamic>> pets = [
-    {
-      'image': 'https://example.com/pet1.jpg',
-      'name': 'Max',
-      'breed': 'Bulldog',
-      'age': 3,
-      'gender': 'Male',
-    },
-  ];
-
-  List<Map<String, dynamic>> get filteredPets {
-    if (searchQuery.isEmpty) {
-      return pets;
-    } else {
-      return pets.where((pet) => pet['breed'].toLowerCase().contains(searchQuery.toLowerCase())).toList();
+  void performSearch(String query) async {
+    List<Pet>? searchResults = await dbService.fetchPetsByBreed(query);
+    if (searchResults != null) {
+      setState(() {
+        pets = searchResults;
+      });
     }
   }
 
@@ -42,11 +47,7 @@ class _PetSearchPageState extends State<SearchPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: TextField(
-          onChanged: (value) {
-            setState(() {
-              searchQuery = value;
-            });
-          },
+          onChanged: (value) => performSearch(value),
           decoration: InputDecoration(
             hintText: 'Enter breed',
             border: InputBorder.none,
@@ -61,24 +62,35 @@ class _PetSearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      body: GridView.builder(
+      body: pets.isEmpty
+          ? Center(child: Text('No pets found.'))
+          : GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: (1 / 1.2),
         ),
-        itemCount: filteredPets.length,
+        itemCount: pets.length,
         itemBuilder: (context, index) {
-          final pet = filteredPets[index];
-          return PetCard(
-            image: pet['image'],
-            name: pet['name'],
-            breed: pet['breed'],
-            age: pet['age'],
-            gender: pet['gender'],
+          final pet = pets[index];
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PetProfilePageView(petId: pet.id),
+                ),
+              );
+            },
+            child: PetCard(
+              image: pet.photoURL ?? '', // Handle null URL
+              name: pet.name,
+              breed: pet.breed,
+              age: pet.age, // Convert age to String if necessary
+              gender: pet.gender,
+            ),
           );
         },
       ),
     );
   }
 }
-
