@@ -86,6 +86,7 @@ class _PetProfilePageState extends State<PetProfilePage> {
                               return Text('Error: ${snapshot.error}');
                             } else {
                               final userIds = snapshot.data;
+                              print(userIds);
                               return ListView.builder(
                                 itemCount: userIds?.length ?? 0,
                                 itemBuilder: (context, index) {

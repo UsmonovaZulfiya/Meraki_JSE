@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../dto/user.dart';
-import '../../service/database.dart';
 
 class PetProfilePageView extends StatefulWidget {
   final String petId;
@@ -26,21 +24,25 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
 
     final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
 
-    DatabaseService? dbService;
-
     if (userUid != null) {
-      dbService = DatabaseService(uid: userUid);
+      try {
+        await FirebaseFirestore.instance.collection('requests').add({
+          'petID': widget.petId,
+          'userID': userUid,
+        });
+      } catch (e) {
+        setState(() {
+          _isRequestSent = false; // Reset the state if an error occurs
+        });
+      }
     }
-    await dbService?.sendAdoptionRequest(widget.petId, false);
-
-    // Optional: Show a confirmation message to the user
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pet Detail Info'),
+        title: const Text('Pet Detail Info'),
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: FirebaseFirestore.instance
@@ -50,7 +52,7 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Text("Something went wrong");
+            return const Text("Something went wrong");
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
@@ -93,9 +95,6 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
                     onPressed: _isRequestSent
                         ? null
                         : () async {
-                            setState(() {
-                              _isRequestSent = true;
-                            });
                             await _sendAdoptionRequest(); // Call the function using parentheses
                           },
                     child: Text(_isRequestSent ? 'Request Sent' : 'Adopt'),
@@ -109,7 +108,6 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
               return Text("Pet not found");
             }
           }
-
           return Center(child: CircularProgressIndicator());
         },
       ),
