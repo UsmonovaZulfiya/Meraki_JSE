@@ -172,22 +172,26 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 #### These requirements serve as a foundation for developing a mobile app that facilitates the adoption process of abandoned pets, providing a positive experience for both users and the animals involved.
 
-#### *User Registration:* Users should be able to create accounts, providing necessary information like their full name, phone number, and email.
+#### *User Registration:* 
+#### Users should be able to create accounts, providing necessary information like their full name, phone number, and email.
 
-#### Browse and Search:
+#### *Browse and Search:*
 #### Users should be able to browse and search for (abandoned) pets based on breed criteria.
 
-Pet Details:
-Detailed profiles for each pet should be available, including images, descriptions, health status, etc.
+#### *Pet Details:*
+#### Detailed profiles for each pet should be available, including images, descriptions, health status, etc.
 
-Adoption Application:
-Users should be able to submit adoption applications or requests for specific pets.
+#### *Adoption Application:*
+#### Users should be able to submit adoption applications or requests for specific pets.
 
-Adoption Status Tracking:
-Users should be able to track the status of their adoption applications, from request to approval or rejection.
+#### *Adoption Status Tracking:*
+#### Users should be able to track the status of their adoption applications, from request to approval or rejection.
 
-Communication:
-Provided contact information to facilitate communication between potential adopters and pet shelters or foster homes.
+#### *Communication:*
+#### Provided contact information to facilitate communication between potential adopters and pet shelters or foster homes.
+
+
+## UML Activity Diagrams 
 
    
 
@@ -198,31 +202,22 @@ Provided contact information to facilitate communication between potential adopt
 
 ## **Contributing**
 
+### Sabrina(Front-end) - Welcome page, Login page, Registration Page, Navigation Page
+### Madina(Full stack) - pet page, pet's list page, adoption page
+### Zulfiya(Back end) - database design (using Springboot and MySQL), GitHub management, testing, planning
+### Dilnoza(QA Engineer) - UI design, Documentation, Readme file, Testing
+
 ## **Authors**
 
 <!--Tables-->
 
 | Name                  | Email            |
 |-----------------------|------------------|
-| Dilnoza Seydametova   | 2110014@newuu.uz |
-| Sabrina Musabaeva     | 2110166@newuu.uz |
-| Madina Shermakhmadova | 2110067@newuu.uz |
-| Zulfiya Usmonova      | 2110141@newuu.uz |
+| Dilnoza Seydametova   | 210014@newuu.uz |
+| Sabrina Musabaeva     | 210166@newuu.uz |
+| Madina Shermakhmadova | 210067@newuu.uz |
+| Zulfiya Usmonova      | 210141@newuu.uz |
 
-## **License**
-
-## **Acknowledgements**
 
 ## **Support**
 
-Responsibilities:
-Sabrina - Front-end
-Madina - Full stack
-Zulfiya - Back end
-Dilnoza - UI/UX and QA Engineer
-
-Contribution:
-Sabrina - Welcome page, Login page, Registration Page, Navigation Page
-Madina - pet page, pet's list page, adoption page
-Zulfiya - database design (using Springboot and MySQL), GitHub management, testing, planning
-Dilnoza - UI design, Documentation, Readme file, Testing
