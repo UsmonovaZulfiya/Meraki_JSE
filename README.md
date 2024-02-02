@@ -170,28 +170,29 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 ## **Requirements Catalog**
 
-#### These requirements serve as a foundation for developing a mobile app that facilitates the adoption process of abandoned pets, providing a positive experience for both users and the animals involved.
+### These requirements serve as a foundation for developing a mobile app that facilitates the adoption process of abandoned pets, providing a positive experience for both users and the animals involved.
 
-#### *User Registration:* 
+### *User Registration:* 
 #### Users should be able to create accounts, providing necessary information like their full name, phone number, and email.
 
-#### *Browse and Search:*
+### *Browse and Search:*
 #### Users should be able to browse and search for (abandoned) pets based on breed criteria.
 
-#### *Pet Details:*
+### *Pet Details:*
 #### Detailed profiles for each pet should be available, including images, descriptions, health status, etc.
 
-#### *Adoption Application:*
+### *Adoption Application:*
 #### Users should be able to submit adoption applications or requests for specific pets.
 
-#### *Adoption Status Tracking:*
+### *Adoption Status Tracking:*
 #### Users should be able to track the status of their adoption applications, from request to approval or rejection.
 
-#### *Communication:*
+### *Communication:*
 #### Provided contact information to facilitate communication between potential adopters and pet shelters or foster homes.
 
 
 ## UML Activity Diagrams 
+
 
    
 
