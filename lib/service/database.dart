@@ -97,4 +97,23 @@ class DatabaseService {
     return petsByBreed;
   }
 
+  Future<Map<String, dynamic>?> fetchUserData(String uid) async {
+    try {
+      DocumentSnapshot userDoc = await userCollection.doc(uid).get();
+      return userDoc.data() as Map<String, dynamic>?;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future<void> updateUserProfileData(String uid, String firstName, String lastName, String phoneNumber, String about) async {
+    return await userCollection.doc(uid).update({
+      'firstName': firstName,
+      'lastName': lastName,
+      'phoneNumber': phoneNumber,
+      'about': about,
+    });
+  }
+
   }

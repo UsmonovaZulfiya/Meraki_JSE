@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/service/authentication_service.dart';
 import 'package:untitled/widgets/user_card_widget.dart';
 
+import '../dto/user.dart';
+import '../service/database.dart';
+
 
 class UserProfilePage extends StatelessWidget {
-  final String userPhotoUrl = 'https://cdn2.iconfinder.com/data/icons/veterinary-12/512/Veterinary_Icons-16-512.png'; // Replace with actual photo URL
-  final String userName = 'John Doe'; // Replace with actual user name
+  final String firstName = 'John';
+  final String lastName = 'Doe';// Replace with actual user name
   final String userEmail = 'john.doe@example.com'; // Replace with actual user email
   final String phoneNumber = '+1 123-456-7890'; // Replace with actual user phone number
 
@@ -13,58 +17,70 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+    DatabaseService? dbService;
+
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('User Profile'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // User Card
-            UserCard(
-              photoUrl: userPhotoUrl,
-              userName: userName,
-              userEmail: userEmail,
-              phoneNumber: phoneNumber,
-            ),
-
-            SizedBox(height: 16.0),
-
-            // About Section
-            buildAboutSection(),
-
-            SizedBox(height: 16.0),
-
-            // Buttons Row
-            buildButtonsRow(context),
-
-            SizedBox(height: 16.0),
-
-            // Buttons List View
-            buildButtonsListView(context),
-          ],
-        ),
-      ),
+      body: userUid != null
+          ? FutureBuilder<Map<String, dynamic>?>(
+        future: dbService?.fetchUserData(userUid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              final userData = snapshot.data!;
+              // You need to replace firstName, lastName, userEmail, phoneNumber
+              // with actual data from userData
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    UserCard(
+                      firstName: userData['firstName'] ?? 'N/A', // Replace with actual data
+                      lastName: userData['lastName'] ?? 'N/A', // Replace with actual data
+                      userEmail: userData['email'] ?? 'N/A', // Replace with actual data
+                      phoneNumber: userData['phoneNumber'].toString() ?? 'N/A', // Replace with actual data
+                    ),
+                    SizedBox(height: 16.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'About Me:',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(userData['about'] ?? 'N/A'),
+                      ],
+                    ),
+                    SizedBox(height: 16.0),
+                    // Buttons Row
+                    buildButtonsRow(context),
+                    SizedBox(height: 16.0),
+                    // Buttons List View
+                    buildButtonsListView(context),
+                  ],
+                ),
+              );
+            } else {
+              return Text("No data available");
+            }
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      )
+          : Center(child: Text("No user ID found")),
     );
   }
 
-  Widget buildAboutSection() {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'About Me:',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-        ),
-        SizedBox(height: 8.0),
-        Text(
-          'Lorem ipsum dolor sit amet.',
-        ),
-      ],
-    );
-  }
 
   Widget buildButtonsRow(BuildContext context) {
     return Row(
@@ -79,7 +95,7 @@ class UserProfilePage extends StatelessWidget {
           }
         }),
         buildElevatedButton('Edit Profile', () {
-          // Implement edit profile logic
+          Navigator.pushNamed(context, '/edit_page');
         }),
       ],
     );

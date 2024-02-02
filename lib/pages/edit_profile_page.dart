@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../dto/user.dart';
+import '../service/authentication_service.dart';
+import '../service/database.dart';
 
 class EditProfilePage extends StatefulWidget {
   @override
@@ -11,13 +16,40 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController aboutController = TextEditingController();
 
+  // Fetch the current user's UID
+
+
+
+  @override
+  void initState() {
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+    DatabaseService? dbService;
+
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
+    super.initState();
+    if (userUid != null) {
+      dbService?.fetchUserData(userUid);
+    }
+  }
+
+  // Fetch user data from Firestore and populate the text fields
+
+
   @override
   Widget build(BuildContext context) {
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+    DatabaseService? dbService;
+
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profile'),
       ),
-      body: SingleChildScrollView( // Wrap your Column with SingleChildScrollView
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -38,9 +70,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               InputWidget(
                 label: 'About Yourself',
                 controller: aboutController,
-                onTap: () {
-                  // Add any specific action on tap for the "About Yourself" field.
-                },
               ),
               SizedBox(height: 16),
               Row(
@@ -48,7 +77,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // Add logic for cancel button.
+                        // Navigate back without saving changes
                         Navigator.pop(context);
                       },
                       child: Text('Cancel'),
@@ -57,12 +86,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Add logic for send button.
-                        // You can access the entered values using controllers:
-                        // firstNameController.text, lastNameController.text, etc.
+                      onPressed: () async {
+                        // Update user data with the values from the input fields, if changed
+                        if (userUid != null) {
+                          await DatabaseService(uid: userUid!).updateUserProfileData(
+                            userUid!,
+                            firstNameController.text,
+                            lastNameController.text,
+                            phoneNumberController.text,
+                            aboutController.text,
+                          );
+                          // Optionally show a success message or navigate away
+                          Navigator.pop(context); // Go back to the user profile page
+                        }
                       },
-                      child: Text('Send'),
+                      child: Text('Save'),
                     ),
                   ),
                 ],
@@ -74,6 +112,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 }
+
 
 class InputWidget extends StatelessWidget {
   final String label;

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
-  final String photoUrl;
-  final String userName;
+  final String photoUrl = 'https://cdn2.iconfinder.com/data/icons/veterinary-12/512/Veterinary_Icons-16-512.png';
+  final String firstName;
+  final String lastName;
   final String userEmail;
   final String phoneNumber;
 
   UserCard({
-    required this.photoUrl,
-    required this.userName,
+    required this.firstName,
+    required this.lastName,
     required this.userEmail,
     required this.phoneNumber,
   });
@@ -64,12 +65,13 @@ class UserCard extends StatelessWidget {
           Text(phoneNumber),
         ],
       ),
+
     );
   }
 
   Widget buildUserName() {
     return Text(
-      userName,
+      firstName + " " + lastName,
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
     );
   }
