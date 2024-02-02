@@ -43,7 +43,8 @@ class BiggerPetCard extends StatelessWidget {
                 children: [
                   Text(
                     petType,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0),
                   ),
                 ],
               ),

@@ -7,8 +7,6 @@ import 'package:untitled/service/database.dart';
 import '../../dto/user.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
-
 
 class AdoptionInputPage extends StatefulWidget {
   @override
@@ -16,7 +14,6 @@ class AdoptionInputPage extends StatefulWidget {
 }
 
 class _AdoptionInputPageState extends State<AdoptionInputPage> {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController breedController = TextEditingController();
@@ -33,7 +30,8 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
     breed: '',
     gender: '',
     petType: '',
-    photoURL: 'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg',
+    photoURL:
+        'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg',
     medicalInfo: '',
     addInfo: '',
   );
@@ -61,12 +59,14 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
     }
   }
 
-
   Future<String?> _uploadImageToFirebase(File imageFile) async {
     try {
-      String filePath = 'pets/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
+      String filePath =
+          'pets/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
       // Use refFromURL to specify your Firebase Storage bucket explicitly
-      final ref = FirebaseStorage.instance.refFromURL('gs://petadoption-158ed.appspot.com').child(filePath);
+      final ref = FirebaseStorage.instance
+          .refFromURL('gs://petadoption-158ed.appspot.com')
+          .child(filePath);
       final result = await ref.putFile(imageFile);
       final imageUrl = await result.ref.getDownloadURL();
       return imageUrl; // URL of the uploaded image
@@ -75,7 +75,6 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
       return null;
     }
   }
-
 
   Future<void> _addPet() async {
     try {
@@ -106,7 +105,9 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
         breed: breedController.text,
         gender: gender,
         petType: petType,
-        photoURL: 'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg', // Replace with actual image URL
+        photoURL:
+            'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg',
+        // Replace with actual image URL
         //photoURL: imageUrl,
         medicalInfo: medicalInfoController.text,
         addInfo: additionalInfoController.text,
@@ -147,12 +148,14 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                       border: Border.all(width: 2, color: Colors.grey),
                       image: _petImage != null
                           ? DecorationImage(
-                        fit: BoxFit.cover,
-                        image: FileImage(_petImage!),
-                      )
+                              fit: BoxFit.cover,
+                              image: FileImage(_petImage!),
+                            )
                           : null,
                     ),
-                    child: _petImage == null ? Icon(Icons.add_a_photo) : null, // Only show icon if no image is selected
+                    child: _petImage == null
+                        ? Icon(Icons.add_a_photo)
+                        : null, // Only show icon if no image is selected
                   ),
                 ),
               ),
@@ -192,7 +195,8 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                   labelText: 'Pet Type',
                   border: OutlineInputBorder(),
                 ),
-                value: petType.isNotEmpty ? petType : null, // Ensure this matches an item or is null
+                value: petType.isNotEmpty ? petType : null,
+                // Ensure this matches an item or is null
                 items: ['Dog', 'Cat', 'Bird', 'Others'].map((String type) {
                   return DropdownMenuItem<String>(
                     value: type,
@@ -204,9 +208,9 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                     petType = value ?? '';
                   });
                 },
-                hint: Text('Select a pet type'), // Displayed if the current value is null
+                hint: Text(
+                    'Select a pet type'), // Displayed if the current value is null
               ),
-
 
               SizedBox(height: 16),
 
@@ -224,7 +228,8 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                   labelText: 'Gender',
                   border: OutlineInputBorder(),
                 ),
-                value: gender.isNotEmpty ? gender : null, // Ensure this matches an item or is null
+                value: gender.isNotEmpty ? gender : null,
+                // Ensure this matches an item or is null
                 items: ['Male', 'Female'].map((String gen) {
                   return DropdownMenuItem<String>(
                     value: gen,
@@ -236,7 +241,8 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                     gender = value ?? '';
                   });
                 },
-                hint: Text('Select a gender'), // Displayed if the current value is null
+                hint: Text(
+                    'Select a gender'), // Displayed if the current value is null
               ),
 
               SizedBox(height: 16),
@@ -264,7 +270,6 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                     onPressed: () {
                       // Make sure to check if _imageUrl is set
                       _addPet();
-
                     },
                     child: Text('Add Pet'),
                   ),

@@ -8,7 +8,7 @@ class AuthService {
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   // create user object based on FirebaseUser
-  MyUser? _userFromFirebase(User user){
+  MyUser? _userFromFirebase(User user) {
     return user != null ? MyUser(uid: user.uid) : null;
   }
 
@@ -20,7 +20,8 @@ class AuthService {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
 
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
@@ -29,7 +30,8 @@ class AuthService {
       );
 
       // Once signed in, return the UserCredential
-      UserCredential userCredential = await _auth.signInWithCredential(credential);
+      UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
       return userCredential.user;
       //return _userFromFirebase(user!);
     } catch (e) {
@@ -38,12 +40,9 @@ class AuthService {
     }
   }
 
-  // Stream<MyUser?> get user {
-  //   return _auth.authStateChanges().map((User? user) => _userfromFirebase(user!));
-  // }
-
   Stream<MyUser?> get user {
-    return _auth.authStateChanges()
+    return _auth
+        .authStateChanges()
         .map((User? user) => user != null ? _userFromFirebase(user) : null);
   }
 
@@ -87,25 +86,13 @@ class AuthService {
     }
   }
 
-  // Future<void> login({
-  //   required String email,
-  //   required String password,
-  // }) async {
-  //   try {
-  //     await _auth.signInWithEmailAndPassword(email: email, password: password);
-  //   } on FirebaseAuthException catch (e) {
-  //     //TODO: handling of this exeption that can be due to invalid email or password
-  //     print('Error during login: ${e.message}');
-  //     rethrow;
-  //   }
-  // }
-
   Future<MyUser?> login({
     required String email,
     required String password,
   }) async {
     try {
-      UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       User? user = result.user;
       //return user; // Return the FirebaseUser object
       return _userFromFirebase(user!);
@@ -116,11 +103,10 @@ class AuthService {
     }
   }
 
-  Future signOut() async{
-    try{
+  Future signOut() async {
+    try {
       return await _auth.signOut();
-    }
-    catch(e){
+    } catch (e) {
       print(e.toString());
       return null;
     }

@@ -24,13 +24,15 @@ class CareDetailsPage extends StatelessWidget {
         crossAxisCount: 2,
         padding: const EdgeInsets.all(8.0),
         children: categoryIcons.entries.map((entry) {
-          return _buildCategoryCard(context, entry.key, entry.value, animalType);
+          return _buildCategoryCard(
+              context, entry.key, entry.value, animalType);
         }).toList(),
       ),
     );
   }
 
-  Widget _buildCategoryCard(BuildContext context, String title, IconData icon, String animalType) {
+  Widget _buildCategoryCard(
+      BuildContext context, String title, IconData icon, String animalType) {
     return Card(
       child: InkWell(
         onTap: () {

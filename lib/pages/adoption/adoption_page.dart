@@ -10,7 +10,6 @@ class AdoptionPage extends StatefulWidget {
 class _AdoptionPageState extends State<AdoptionPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    );
+    return Scaffold();
   }
 }

@@ -6,7 +6,6 @@ import '../../dto/user.dart';
 import '../../service/database.dart';
 import '../../widgets/pet_card_widget.dart';
 import '../adoption/pet_details_view_user.dart';
-import '../adoption/pet_profile_page.dart';
 
 class DogPage extends StatefulWidget {
   const DogPage({super.key});
@@ -18,7 +17,6 @@ class DogPage extends StatefulWidget {
 class _DogPageState extends State<DogPage> {
   @override
   Widget build(BuildContext context) {
-
     final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
 
     DatabaseService? dbService;
@@ -47,7 +45,8 @@ class _DogPageState extends State<DogPage> {
                 crossAxisCount: 2, // Adjust the number of columns as needed
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                childAspectRatio: 0.8, // Adjust the card's aspect ratio as needed
+                childAspectRatio:
+                    0.8, // Adjust the card's aspect ratio as needed
               ),
               padding: EdgeInsets.all(8),
               itemCount: pets.length,
@@ -58,7 +57,9 @@ class _DogPageState extends State<DogPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PetProfilePageView(petId: pet.id), // Assuming `pet.id` holds the pet's ID
+                        builder: (context) => PetProfilePageView(
+                            petId:
+                                pet.id), // Assuming `pet.id` holds the pet's ID
                       ),
                     );
                   },
@@ -77,7 +78,4 @@ class _DogPageState extends State<DogPage> {
       ),
     );
   }
-
-
 }
-

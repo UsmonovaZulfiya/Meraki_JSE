@@ -24,7 +24,6 @@ import 'pages/adoption/my_pets_page.dart';
 import 'pages/adoption/pet_profile_page.dart';
 import 'package:untitled/pages/adoption/my_requests_page.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Platform.isAndroid
@@ -35,45 +34,53 @@ void main() async {
               messagingSenderId: '244911606193',
               projectId: 'petadoption-158ed'))
       : await Firebase.initializeApp();
-  final AuthService authService = AuthService(); // Create an instance of AuthService
-  runApp( StreamProvider<MyUser?>.value(
-    value: AuthService().user,  // AuthService should have a stream that emits MyUser? objects based on auth state
-    initialData: null,  // Initial data is null indicating no user is currently signed in
-    child: MyApp(authService: authService),  // Your main app widget
-  ),);
+  final AuthService authService =
+      AuthService(); // Create an instance of AuthService
+  runApp(
+    StreamProvider<MyUser?>.value(
+      value: AuthService().user,
+      // AuthService should have a stream that emits MyUser? objects based on auth state
+      initialData: null,
+      // Initial data is null indicating no user is currently signed in
+      child: MyApp(authService: authService), // Your main app widget
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   final AuthService authService; // Declare a final variable for AuthService
 
-  const MyApp({super.key, required this.authService}); // Accept it in the constructor
+  const MyApp(
+      {super.key, required this.authService}); // Accept it in the constructor
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const Wrapper(),
-          '/welcome': (context) => const WelcomePage(),
-          '/login': (context) => const LoginPage(),
-          '/registration': (context) => const RegistrationPage(),
-          '/profile': (context) => UserProfilePage(),
-          '/search': (context) => SearchPage(),
-          '/adoption': (context) => AdoptionInputPage(),
-          '/favorites': (context) => FavoritesPage(),
-          '/recommendations': (context) => RecommendationsPage(),
-          '/main_page': (context) => MainPage(),
-          '/my_pets_page': (context) => MyPetsPage(),
-          '/pet_profile': (context) => PetProfilePage(petId: '',),
-          '/my_requests_page': (context) => MyRequestsPage(),
-          '/cat_page': (context) => CatPage(),
-          '/dog_page': (context) => DogPage(),
-          '/bird_page': (context) => BirdPage(),
-          '/other_page': (context) => OtherPage(),
-          '/edit_page': (context) => EditProfilePage(),
-        },
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Wrapper(),
+        '/welcome': (context) => const WelcomePage(),
+        '/login': (context) => const LoginPage(),
+        '/registration': (context) => const RegistrationPage(),
+        '/profile': (context) => UserProfilePage(),
+        '/search': (context) => SearchPage(),
+        '/adoption': (context) => AdoptionInputPage(),
+        '/favorites': (context) => FavoritesPage(),
+        '/recommendations': (context) => RecommendationsPage(),
+        '/main_page': (context) => MainPage(),
+        '/my_pets_page': (context) => MyPetsPage(),
+        '/pet_profile': (context) => PetProfilePage(
+              petId: '',
+            ),
+        '/my_requests_page': (context) => MyRequestsPage(),
+        '/cat_page': (context) => CatPage(),
+        '/dog_page': (context) => DogPage(),
+        '/bird_page': (context) => BirdPage(),
+        '/other_page': (context) => OtherPage(),
+        '/edit_page': (context) => EditProfilePage(),
+      },
     );
   }
 }

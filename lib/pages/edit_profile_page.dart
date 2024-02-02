@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../dto/user.dart';
-import '../service/authentication_service.dart';
 import '../service/database.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -17,8 +15,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController aboutController = TextEditingController();
 
   // Fetch the current user's UID
-
-
 
   @override
   void initState() {
@@ -35,7 +31,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   // Fetch user data from Firestore and populate the text fields
-
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +84,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       onPressed: () async {
                         // Update user data with the values from the input fields, if changed
                         if (userUid != null) {
-                          await DatabaseService(uid: userUid!).updateUserProfileData(
+                          await DatabaseService(uid: userUid!)
+                              .updateUserProfileData(
                             userUid!,
                             firstNameController.text,
                             lastNameController.text,
@@ -97,7 +93,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             aboutController.text,
                           );
                           // Optionally show a success message or navigate away
-                          Navigator.pop(context); // Go back to the user profile page
+                          Navigator.pop(
+                              context); // Go back to the user profile page
                         }
                       },
                       child: Text('Save'),
@@ -112,7 +109,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 }
-
 
 class InputWidget extends StatelessWidget {
   final String label;
@@ -142,10 +138,13 @@ class InputWidget extends StatelessWidget {
           controller: controller,
           readOnly: readOnly,
           onTap: onTap,
-          decoration: InputDecoration( // Add this decoration
-          hintText: "Enter " + label + " if you want to change", // Use the hintText
-          border: OutlineInputBorder(),
-        ),),
+          decoration: InputDecoration(
+            // Add this decoration
+            hintText: "Enter " + label + " if you want to change",
+            // Use the hintText
+            border: OutlineInputBorder(),
+          ),
+        ),
         SizedBox(height: 4),
       ],
     );

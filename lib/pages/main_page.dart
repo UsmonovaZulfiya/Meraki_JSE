@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/pages/recommendation/category_page.dart';
 import 'package:untitled/pages/user_profile_page.dart';
-
 import 'adoption/add_pet_page.dart';
-import 'catalog&search/search_page.dart';
-import 'main_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
-
-
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -46,7 +41,7 @@ class _MainPageState extends State<MainPage> {
         }
       },
       child: Scaffold(
-        body:  _widgetOptions.elementAt(_selectedIndex),
+        body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -113,19 +108,23 @@ class MainPageContent extends StatelessWidget {
               children: <Widget>[
                 CategoryWidget(
                   title: 'Cats',
-                  onTap: () => navigateToCategoryPage(context, 'cat_page'), // For example
+                  onTap: () => navigateToCategoryPage(
+                      context, 'cat_page'), // For example
                 ),
                 CategoryWidget(
                   title: 'Dogs',
-                  onTap: () => navigateToCategoryPage(context, 'dog_page'), // For example
+                  onTap: () => navigateToCategoryPage(
+                      context, 'dog_page'), // For example
                 ),
                 CategoryWidget(
                   title: 'Birds',
-                  onTap: () => navigateToCategoryPage(context, 'bird_page'), // For example
+                  onTap: () => navigateToCategoryPage(
+                      context, 'bird_page'), // For example
                 ),
                 CategoryWidget(
                   title: 'Other',
-                  onTap: () => navigateToCategoryPage(context, 'other_page'), // For example
+                  onTap: () => navigateToCategoryPage(
+                      context, 'other_page'), // For example
                 ),
               ],
             ),

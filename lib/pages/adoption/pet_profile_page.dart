@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 class PetProfilePage extends StatefulWidget {
   final String petId;
 
@@ -19,18 +18,24 @@ class _PetProfilePageState extends State<PetProfilePage> {
         title: Text('Pet Detail Info'),
       ),
       body: FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance.collection('pets').doc(widget.petId).get(),
-        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        future: FirebaseFirestore.instance
+            .collection('pets')
+            .doc(widget.petId)
+            .get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data?.exists ?? false) {
-              Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+              Map<String, dynamic> data =
+                  snapshot.data!.data() as Map<String, dynamic>;
               return ListView(
                 children: <Widget>[
-                  Image.network(data['photo'], height: 200.0, width: double.infinity),
+                  Image.network(data['photo'],
+                      height: 200.0, width: double.infinity),
                   ListTile(
                     title: Text(data['name']),
                     subtitle: Text(data['breed']),

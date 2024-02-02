@@ -65,32 +65,34 @@ class _PetSearchPageState extends State<SearchPage> {
       body: pets.isEmpty
           ? Center(child: Text('No pets found.'))
           : GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: (1 / 1.2),
-        ),
-        itemCount: pets.length,
-        itemBuilder: (context, index) {
-          final pet = pets[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PetProfilePageView(petId: pet.id),
-                ),
-              );
-            },
-            child: PetCard(
-              image: pet.photoURL ?? '', // Handle null URL
-              name: pet.name,
-              breed: pet.breed,
-              age: pet.age, // Convert age to String if necessary
-              gender: pet.gender,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: (1 / 1.2),
+              ),
+              itemCount: pets.length,
+              itemBuilder: (context, index) {
+                final pet = pets[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PetProfilePageView(petId: pet.id),
+                      ),
+                    );
+                  },
+                  child: PetCard(
+                    image: pet.photoURL ?? '',
+                    // Handle null URL
+                    name: pet.name,
+                    breed: pet.breed,
+                    age: pet.age,
+                    // Convert age to String if necessary
+                    gender: pet.gender,
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }

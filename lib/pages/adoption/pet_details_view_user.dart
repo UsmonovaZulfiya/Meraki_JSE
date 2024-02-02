@@ -5,10 +5,8 @@ import 'package:provider/provider.dart';
 import '../../dto/user.dart';
 import '../../service/database.dart';
 
-
 class PetProfilePageView extends StatefulWidget {
   final String petId;
-
 
   const PetProfilePageView({Key? key, required this.petId}) : super(key: key);
 
@@ -18,7 +16,8 @@ class PetProfilePageView extends StatefulWidget {
 
 class _PetProfilePageViewState extends State<PetProfilePageView> {
   bool _isRequestSent = false;
-  Future <void> _sendAdoptionRequest() async {
+
+  Future<void> _sendAdoptionRequest() async {
     if (_isRequestSent) return; // Prevent sending multiple requests
 
     setState(() {
@@ -36,6 +35,7 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
 
     // Optional: Show a confirmation message to the user
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,18 +43,24 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
         title: Text('Pet Detail Info'),
       ),
       body: FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance.collection('pets').doc(widget.petId).get(),
-        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        future: FirebaseFirestore.instance
+            .collection('pets')
+            .doc(widget.petId)
+            .get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data?.exists ?? false) {
-              Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+              Map<String, dynamic> data =
+                  snapshot.data!.data() as Map<String, dynamic>;
               return ListView(
                 children: <Widget>[
-                  Image.network(data['photo'], height: 200.0, width: double.infinity),
+                  Image.network(data['photo'],
+                      height: 200.0, width: double.infinity),
                   ListTile(
                     title: Text(data['name']),
                     subtitle: Text(data['breed']),
@@ -87,11 +93,11 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
                     onPressed: _isRequestSent
                         ? null
                         : () async {
-                      setState(() {
-                        _isRequestSent = true;
-                      });
-                      await _sendAdoptionRequest(); // Call the function using parentheses
-                    },
+                            setState(() {
+                              _isRequestSent = true;
+                            });
+                            await _sendAdoptionRequest(); // Call the function using parentheses
+                          },
                     child: Text(_isRequestSent ? 'Request Sent' : 'Adopt'),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50), // Set the size

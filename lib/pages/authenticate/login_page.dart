@@ -16,20 +16,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Future<void> _login() async {
-  //   try {
-  //     await _authService.login(
-  //       email: _emailController.text,
-  //       password: _passwordController.text,
-  //     );
-  //     // Navigate to the next screen or perform any other actions
-  //     Navigator.pushNamed(context, '/main_page');
-  //   } catch (e) {
-  //     print(e.toString());
-  //     // Handle and display errors to the user
-  //   }
-  // }
-
   Future<void> _login() async {
     try {
       MyUser? user = await _authService.login(
@@ -181,7 +167,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
               onPressed: () async {
                 User? user = await _authService.signInWithGoogle();
@@ -196,7 +184,6 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: Text('Sign in with Google'),
             )
-
           ],
         ),
       ),

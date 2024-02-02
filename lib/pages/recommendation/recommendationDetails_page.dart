@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/utils/const/recommendations_text.dart';
 
 class RecommendationsPage extends StatelessWidget {
   final String category;
@@ -10,7 +9,8 @@ class RecommendationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //content based on the category
-    final content = getContentForCategory(category);//let's assume we have a function getContentForCategory
+    final content = getContentForCategory(
+        category); //let's assume we have a function getContentForCategory
 
     return Scaffold(
       appBar: AppBar(
@@ -28,8 +28,6 @@ class RecommendationsPage extends StatelessWidget {
   }
 
   String getContentForCategory(String category) {
-    return 'Content for $category';// This function should return the content based on the category
+    return 'Content for $category'; // This function should return the content based on the category
   }
 }
-
-
