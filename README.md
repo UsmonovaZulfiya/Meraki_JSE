@@ -194,6 +194,9 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ## UML Activity Diagrams 
 ![Uml](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/7ed7222d-388e-4d51-b2af-355054c73e1f)
 
+#### Main 
+C:\Users\User\Downloads\Telegram Desktop\Uml_1.png 
+
 
    
 
