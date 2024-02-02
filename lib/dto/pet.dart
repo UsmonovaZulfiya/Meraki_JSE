@@ -32,5 +32,5 @@ class Pet {
         petType = doc['petType'],
         photoURL = doc['photo'],
         medicalInfo = doc['medical_info'],
-        addInfo = doc['additional_info'] {}
+        addInfo = doc['additional_info'];
 }

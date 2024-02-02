@@ -14,7 +14,6 @@ class MyPetsPage extends StatefulWidget {
 }
 
 class _MyPetsPageState extends State<MyPetsPage> {
-  // Assume currentUserUid is available
   @override
   Widget build(BuildContext context) {
     final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
@@ -25,7 +24,6 @@ class _MyPetsPageState extends State<MyPetsPage> {
       dbService = DatabaseService(uid: userUid);
     }
 
-    //TODO: add message showing when there are no pets
     return Scaffold(
       appBar: AppBar(title: const Text('My Pets')),
       body: FutureBuilder<List<Pet>>(

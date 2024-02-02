@@ -9,6 +9,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 
 class AdoptionInputPage extends StatefulWidget {
+  const AdoptionInputPage({super.key});
+
   @override
   _AdoptionInputPageState createState() => _AdoptionInputPageState();
 }
@@ -71,7 +73,6 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
       final imageUrl = await result.ref.getDownloadURL();
       return imageUrl; // URL of the uploaded image
     } catch (e) {
-      print(e);
       return null;
     }
   }

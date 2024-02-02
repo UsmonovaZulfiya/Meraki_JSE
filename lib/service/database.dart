@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled/dto/pet.dart';
+import 'package:untitled/dto/user_request.dart';
 
 class DatabaseService {
   final String uid;
@@ -11,7 +12,10 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('pets');
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
+  final CollectionReference requestCollection =
+      FirebaseFirestore.instance.collection('pet_adoption_requests');
 
+  //USER functions
   Future updateUserData(
       String firstName, String lastName, int phoneNumber, String about) async {
     return await userCollection.doc(uid).set({
@@ -22,6 +26,33 @@ class DatabaseService {
     });
   }
 
+  Future<Map<String, dynamic>?> fetchUserData(String uid) async {
+    try {
+      DocumentSnapshot userDoc = await userCollection.doc(uid).get();
+      return userDoc.data() as Map<String, dynamic>?;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<UserRequest?> fetchUserById(String userId) async {
+    return userCollection
+        .doc(userId)
+        .get()
+        .then((doc) => UserRequest.fromDocumentSnapshot(doc));
+  }
+
+  Future<void> updateUserProfileData(String uid, String firstName,
+      String lastName, String phoneNumber, String about) async {
+    return await userCollection.doc(uid).update({
+      'firstName': firstName,
+      'lastName': lastName,
+      'phoneNumber': phoneNumber,
+      'about': about,
+    });
+  }
+
+  //PET functions
   Future addPetData(Pet pet) async {
     return await petCollection.add({
       'name': pet.name,
@@ -33,24 +64,43 @@ class DatabaseService {
       'medical_info': pet.medicalInfo,
       'additional_info': pet.addInfo,
       'ownerUID': uid,
+      'adopterUID': null
     });
-  }
-
-  Stream<QuerySnapshot> get pets {
-    return petCollection.snapshots();
   }
 
   Future<List<Pet>> fetchUserPets() async {
     List<Pet> userPets = [];
     try {
-      final QuerySnapshot result =
-          await petCollection.where('ownerUID', isEqualTo: uid).get();
+      final QuerySnapshot result = await petCollection
+          .where('ownerUID', isEqualTo: uid)
+          .where('adopterUID', isEqualTo: null)
+          .get();
       userPets =
           result.docs.map((doc) => Pet.fromDocumentSnapshot(doc)).toList();
     } catch (e) {
       print(e.toString());
     }
     return userPets;
+  }
+
+  Future<List<String>> fetchPetAdoptionRequests(
+      String petID) async {
+    List<String> userIDs = [];
+    try {
+      final QuerySnapshot result =
+          await requestCollection.where('petID', isEqualTo: petID).get();
+      userIDs = result.docs.map((doc) => doc['userId'] as String).toList();
+    } catch (e) {
+      print(e.toString());
+    }
+    return userIDs;
+  }
+
+  Future<Pet> fetchPetByUID(String petUID) async {
+    return petCollection
+        .doc(petUID)
+        .get()
+        .then((doc) => Pet.fromDocumentSnapshot(doc));
   }
 
   Future<List<Pet>> fetchPetsByCategory(String category) async {
@@ -103,25 +153,5 @@ class DatabaseService {
       print(e.toString());
     }
     return petsByBreed;
-  }
-
-  Future<Map<String, dynamic>?> fetchUserData(String uid) async {
-    try {
-      DocumentSnapshot userDoc = await userCollection.doc(uid).get();
-      return userDoc.data() as Map<String, dynamic>?;
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
-
-  Future<void> updateUserProfileData(String uid, String firstName,
-      String lastName, String phoneNumber, String about) async {
-    return await userCollection.doc(uid).update({
-      'firstName': firstName,
-      'lastName': lastName,
-      'phoneNumber': phoneNumber,
-      'about': about,
-    });
   }
 }

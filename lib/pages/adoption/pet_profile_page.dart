@@ -1,10 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled/dto/user_request.dart';
+import '../../dto/pet.dart';
+import '../../dto/user.dart';
+import '../../service/database.dart';
 
 class PetProfilePage extends StatefulWidget {
   final String petId;
 
-  const PetProfilePage({Key? key, required this.petId}) : super(key: key);
+  const PetProfilePage({super.key, required this.petId});
 
   @override
   State<PetProfilePage> createState() => _PetProfilePageState();
@@ -13,65 +17,128 @@ class PetProfilePage extends StatefulWidget {
 class _PetProfilePageState extends State<PetProfilePage> {
   @override
   Widget build(BuildContext context) {
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+
+    DatabaseService? dbService;
+
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pet Detail Info'),
+        title: const Text('Pet Detail Info'),
       ),
-      body: FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance
-            .collection('pets')
-            .doc(widget.petId)
-            .get(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return Text("Something went wrong");
-          }
-
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.data?.exists ?? false) {
-              Map<String, dynamic> data =
-                  snapshot.data!.data() as Map<String, dynamic>;
-              return ListView(
-                children: <Widget>[
-                  Image.network(data['photo'],
-                      height: 200.0, width: double.infinity),
-                  ListTile(
-                    title: Text(data['name']),
-                    subtitle: Text(data['breed']),
-                    trailing: Text(data['gender']),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Medical background'),
-                  ),
-                  Card(
-                    margin: EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(data['medical_info'] ?? 'Not available'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Description'),
-                  ),
-                  Card(
-                    margin: EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(data['additional_info'] ?? 'Not available'),
-                    ),
-                  ),
-                ],
-              );
-            } else {
-              return Text("Pet not found");
-            }
-          }
-
-          return Center(child: CircularProgressIndicator());
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: FutureBuilder<Pet>(
+              future: dbService?.fetchPetByUID(widget.petId),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  final pet = snapshot.data;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Image.network(pet?.photoURL ?? '',
+                          height: 200.0, width: double.infinity),
+                      ListTile(
+                        title: Text(pet?.name ?? ''),
+                        subtitle: Text(pet?.breed ?? ''),
+                        trailing: Text(pet?.gender ?? ''),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Medical background'),
+                      ),
+                      Card(
+                        margin: EdgeInsets.all(8.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(pet?.medicalInfo ?? 'Not available'),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Description'),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.all(8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(pet?.addInfo ?? 'Not available'),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Expanded(
+                        child: FutureBuilder<List<String>>(
+                          future:
+                              dbService?.fetchPetAdoptionRequests(widget.petId),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const CircularProgressIndicator();
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else {
+                              final userIds = snapshot.data;
+                              return ListView.builder(
+                                itemCount: userIds?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  return FutureBuilder<UserRequest?>(
+                                    future: dbService
+                                        ?.fetchUserById(userIds![index]),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return const CircularProgressIndicator();
+                                      } else if (snapshot.hasError) {
+                                        return Text('Error: ${snapshot.error}');
+                                      } else {
+                                        UserRequest? user = snapshot.data;
+                                        return ListTile(
+                                          title: Text(user!.email),
+                                          trailing: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // Deny button logic
+                                                  // Implement deny functionality
+                                                },
+                                                child: Text('Deny'),
+                                              ),
+                                              SizedBox(width: 8),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  // Approve button logic
+                                                  // Implement approve functionality
+                                                },
+                                                child: Text('Approve'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  );
+                                },
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
