@@ -332,5 +332,24 @@ This means our Flutter project requires Dart SDK version 3.1.5 or later, but les
 | Zulfiya Usmonova      | 210141@newuu.uz |
 
 
-## **Support**
+## **Code information**
+
+Files structure: 
+- pages folder: contains all pages;
+- dto folder: contains information about classes;
+- service folder: contains information about authentication and database operations files;
+- widgets: custom widgets are there.
+
+We used Navigator for navigating through screens and Provider for managing states.
+
+Adoption page folder: contains all pages connected with pets, adding pets, my pets, and my requests as well as pet profiles.
+Authenticate page folder: contains 3 pages including welcome, login, and registration pages.
+Catalog and search folder: contains search by catalog and search by breed pages.
+Recommendation folder: contains pages connected with information/recommendations on how to take care of pets.
+
+DTO folder has 2 classes: Pet and MyUser.
+
+Services folder has 2 files: authenticate(for handling login, registration, and logout) and database(sending queries to firestore).
+
+
 
