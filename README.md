@@ -197,6 +197,9 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 #### Main 
 ![Uml_1](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/1ea8aefb-190f-4da1-8bb3-3b8452ba0cd8)
 
+#### Search and Add
+
+
 
 
 
