@@ -15,7 +15,7 @@ class MyRequestsPetCard extends StatelessWidget {
     required this.breed,
     required this.age,
     required this.gender,
-    this.requestSent = false,
+    this.requestSent = true,
     this.requestAccepted = false,
   });
 

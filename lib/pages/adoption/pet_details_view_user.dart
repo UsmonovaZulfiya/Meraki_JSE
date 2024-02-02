@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../dto/user.dart';
+import '../../service/database.dart';
 
 
 class PetProfilePageView extends StatefulWidget {
@@ -13,7 +17,25 @@ class PetProfilePageView extends StatefulWidget {
 }
 
 class _PetProfilePageViewState extends State<PetProfilePageView> {
-  bool isRequestSent = false;
+  bool _isRequestSent = false;
+  Future <void> _sendAdoptionRequest() async {
+    if (_isRequestSent) return; // Prevent sending multiple requests
+
+    setState(() {
+      _isRequestSent = true;
+    });
+
+    final String? userUid = Provider.of<MyUser?>(context, listen: false)?.uid;
+
+    DatabaseService? dbService;
+
+    if (userUid != null) {
+      dbService = DatabaseService(uid: userUid);
+    }
+    await dbService?.sendAdoptionRequest(widget.petId, false);
+
+    // Optional: Show a confirmation message to the user
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,15 +84,17 @@ class _PetProfilePageViewState extends State<PetProfilePageView> {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: isRequestSent ? null : () {
+                    onPressed: _isRequestSent
+                        ? null
+                        : () async {
                       setState(() {
-                        isRequestSent = true;
+                        _isRequestSent = true;
                       });
-                      // Add logic to handle the adoption request here
+                      await _sendAdoptionRequest(); // Call the function using parentheses
                     },
-                    child: Text(isRequestSent ? 'Request Sent' : 'Adopt'),
+                    child: Text(_isRequestSent ? 'Request Sent' : 'Adopt'),
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50), // set the size
+                      minimumSize: Size(double.infinity, 50), // Set the size
                     ),
                   ),
                 ],

@@ -50,7 +50,7 @@ class DatabaseService {
   Future<List<Pet>> fetchPetsByCategory(String category) async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('pets')
-        .where('petType', isEqualTo: category) // Assuming 'petType' is the field for categories
+        .where('petType', isEqualTo: category)
         .get();
 
     return querySnapshot.docs
@@ -58,4 +58,31 @@ class DatabaseService {
         .toList();
   }
 
-}
+  Future<void> sendAdoptionRequest(String petId, bool requestStatus) async {
+    String requestId = petCollection.doc().id;
+    await FirebaseFirestore.instance.collection('requests').doc(requestId).set({
+      'userId': uid,
+      'petId': petId,
+      'requestId': requestId,
+      'requestStatus': requestStatus,
+    });
+  }
+
+  Stream<QuerySnapshot> getUserAdoptionRequests() {
+    return FirebaseFirestore.instance
+        .collection('requests')
+        .where('userId', isEqualTo: uid)
+        .snapshots();
+  }
+
+  Future<List<Pet>> fetchPetsByIds(List<String> petIds) async {
+    List<Pet> pets = [];
+    for (String id in petIds) {
+      var petDoc = await petCollection.doc(id).get();
+      if (petDoc.exists) {
+        pets.add(Pet.fromDocumentSnapshot(petDoc));
+      }
+    }
+    return pets;
+  }
+  }

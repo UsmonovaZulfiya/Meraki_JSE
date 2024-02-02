@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../dto/user.dart';
 import '../../service/authentication_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -180,6 +181,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
+          SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: () async {
+                User? user = await _authService.signInWithGoogle();
+                if (user != null) {
+                  // Navigate to the main page if login is successful
+                  Navigator.pushReplacementNamed(context, '/main_page');
+                } else {
+                  // Handle the situation where the user object is null
+                  // This could happen if the login fails
+                  print('Google Sign-In failed: User is null');
+                }
+              },
+              child: Text('Sign in with Google'),
+            )
+
           ],
         ),
       ),
