@@ -85,7 +85,7 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 
 ### Application Submission:
 
-1. When you find a pet you're interested in, click on the "Adopt Me" or "Apply for Adoption" button
+1. When you find a pet you're interested in, click on the "Adopt" button
    on the pet's profile.
 1. Complete the adoption application form, providing the necessary details as requested.
 1. Submit the request.
@@ -93,7 +93,6 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ### Contacting Shelters/Organizations:
 
 1. Use the provided contact information to get in touch with the shelter/rescue organization.
-1. Communicate inquiries or express interest in a specific pet.
 
 ## 4. User Profile Management
 
@@ -105,14 +104,12 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ### Tracking Applications:
 
 1. Check the status of your adoption applications in your profile/dashboard.
-1. Receive notifications or updates regarding application progress.
 
 ## 5. Notifications and Alerts
 
 ### Opt-In for Notifications:
 
 1. Access the app settings or notification preferences section.
-1. Customize your notification preferences for new pets, application status updates, etc.
 
 ## 6. Additional Features
 
@@ -171,8 +168,8 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 * **Admin Features:**  Backend management tools for shelters or administrators to manage pet
   listings, applications, and user interactions.
 
-### 9. Requirements Catalog
-   **
+## **Requirements Catalog**
+   
 
 
 
