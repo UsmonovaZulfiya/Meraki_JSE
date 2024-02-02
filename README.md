@@ -168,7 +168,7 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 * **Admin Features:**  Backend management tools for shelters or administrators to manage pet
   listings, applications, and user interactions.
 
-## **Requirements Catalog**
+## Requirements Catalog
 
 ### These requirements serve as a foundation for developing a mobile app that facilitates the adoption process of abandoned pets, providing a positive experience for both users and the animals involved.
 
@@ -198,8 +198,10 @@ Access helpful articles, tips, and guidelines on pet care, training, and respons
 ![Uml_1](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/1ea8aefb-190f-4da1-8bb3-3b8452ba0cd8)
 
 #### Search and Add
+![Uml_2](https://github.com/UsmonovaZulfiya/Meraki_JSE/assets/98756981/21e4e583-7692-47e7-ac24-179c2b41c121)
 
 
+## **Mobile Application Development Lifecycle**
 
 
 
