@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/widgets/input_widget.dart';
 import 'package:untitled/dto/pet.dart';
 import 'package:untitled/service/database.dart';
 import '../../dto/user.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
+import 'package:permission_handler/permission_handler.dart';
+
 
 class AdoptionInputPage extends StatefulWidget {
   @override
@@ -11,6 +16,7 @@ class AdoptionInputPage extends StatefulWidget {
 }
 
 class _AdoptionInputPageState extends State<AdoptionInputPage> {
+
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController breedController = TextEditingController();
@@ -27,10 +33,49 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
     breed: '',
     gender: '',
     petType: '',
-    photoURL: '',
+    photoURL: 'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg',
     medicalInfo: '',
     addInfo: '',
   );
+
+  Future<void> _captureAndUploadImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+
+    if (image != null) {
+      File imageFile = File(image.path);
+      setState(() {
+        _petImage = imageFile;
+      });
+      // Now wait for the upload to complete before proceeding
+      String? imageUrl = await _uploadImageToFirebase(imageFile);
+      if (imageUrl != null) {
+        setState(() {
+          _imageUrl = imageUrl;
+        });
+      } else {
+        print("Failed to upload image");
+      }
+    } else {
+      print("No image selected");
+    }
+  }
+
+
+  Future<String?> _uploadImageToFirebase(File imageFile) async {
+    try {
+      String filePath = 'pets/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
+      // Use refFromURL to specify your Firebase Storage bucket explicitly
+      final ref = FirebaseStorage.instance.refFromURL('gs://petadoption-158ed.appspot.com').child(filePath);
+      final result = await ref.putFile(imageFile);
+      final imageUrl = await result.ref.getDownloadURL();
+      return imageUrl; // URL of the uploaded image
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
 
   Future<void> _addPet() async {
     try {
@@ -62,6 +107,7 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
         gender: gender,
         petType: petType,
         photoURL: 'https://img.freepik.com/free-photo/cute-animals-group-white-background_23-2150038562.jpg', // Replace with actual image URL
+        //photoURL: imageUrl,
         medicalInfo: medicalInfoController.text,
         addInfo: additionalInfoController.text,
       );
@@ -73,6 +119,9 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
       print(e.toString());
     }
   }
+
+  File? _petImage; // To temporarily store the picked image file
+  String _imageUrl = ''; // To store the uploaded image URL
 
   @override
   Widget build(BuildContext context) {
@@ -88,16 +137,23 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
             children: [
               // Circular image placeholder
               Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.grey),
-                  //TODO: implement photo adding and storing in firebase storage
-                  // image: DecorationImage(
-                  //   fit: BoxFit.cover,
-                  //   image: NetworkImage(pet.photoURL),
-                  // ),
+                child: GestureDetector(
+                  onTap: _captureAndUploadImage,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(width: 2, color: Colors.grey),
+                      image: _petImage != null
+                          ? DecorationImage(
+                        fit: BoxFit.cover,
+                        image: FileImage(_petImage!),
+                      )
+                          : null,
+                    ),
+                    child: _petImage == null ? Icon(Icons.add_a_photo) : null, // Only show icon if no image is selected
+                  ),
                 ),
               ),
 
@@ -206,7 +262,9 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      // Make sure to check if _imageUrl is set
                       _addPet();
+
                     },
                     child: Text('Add Pet'),
                   ),

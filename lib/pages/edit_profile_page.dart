@@ -132,16 +132,21 @@ class InputWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 2),
         TextField(
           controller: controller,
           readOnly: readOnly,
           onTap: onTap,
-        ),
+          decoration: InputDecoration( // Add this decoration
+          hintText: "Enter " + label + " if you want to change", // Use the hintText
+          border: OutlineInputBorder(),
+        ),),
+        SizedBox(height: 4),
       ],
     );
   }
