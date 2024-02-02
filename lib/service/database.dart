@@ -47,4 +47,15 @@ class DatabaseService {
     return userPets;
   }
 
+  Future<List<Pet>> fetchPetsByCategory(String category) async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('pets')
+        .where('petType', isEqualTo: category) // Assuming 'petType' is the field for categories
+        .get();
+
+    return querySnapshot.docs
+        .map((doc) => Pet.fromDocumentSnapshot(doc))
+        .toList();
+  }
+
 }

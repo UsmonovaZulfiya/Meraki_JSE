@@ -7,6 +7,10 @@ import 'package:untitled/dto/user.dart';
 import 'package:untitled/pages/Wrapper.dart';
 import 'package:untitled/pages/adoption/add_pet_page.dart';
 import 'package:untitled/pages/authenticate/registration_page.dart';
+import 'package:untitled/pages/catalog&search/bird_page.dart';
+import 'package:untitled/pages/catalog&search/cat_page.dart';
+import 'package:untitled/pages/catalog&search/dog_page.dart';
+import 'package:untitled/pages/catalog&search/other_page.dart';
 import 'package:untitled/pages/main_page.dart';
 import 'package:untitled/pages/user_profile_page.dart';
 import 'package:untitled/service/authentication_service.dart';
@@ -63,6 +67,10 @@ class MyApp extends StatelessWidget {
           '/my_pets_page': (context) => MyPetsPage(),
           '/pet_profile': (context) => PetProfilePage(petId: '',),
           '/my_requests_page': (context) => MyRequestsPage(),
+          '/cat_page': (context) => CatPage(),
+          '/dog_page': (context) => DogPage(),
+          '/bird_page': (context) => BirdPage(),
+          '/other_page': (context) => OtherPage(),
         },
     );
   }

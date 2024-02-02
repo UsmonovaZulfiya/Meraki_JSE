@@ -206,13 +206,6 @@ class _AdoptionInputPageState extends State<AdoptionInputPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text('Cancel'),
-                  ),
-                  SizedBox(width: 16),
-                  ElevatedButton(
-                    onPressed: () {
                       _addPet();
                     },
                     child: Text('Add Pet'),

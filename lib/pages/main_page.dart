@@ -9,6 +9,8 @@ import 'main_page.dart';
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
+
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -71,6 +73,11 @@ class _MainPageState extends State<MainPage> {
 class MainPageContent extends StatelessWidget {
   const MainPageContent({super.key});
 
+  void navigateToCategoryPage(BuildContext context, String category) {
+    final routeName = '/$category'; // Construct the route name dynamically
+    Navigator.pushNamed(context, routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,11 +110,23 @@ class MainPageContent extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               padding: EdgeInsets.all(8.0),
-              children: const <Widget>[
-                CategoryWidget(title: 'Cats'),
-                CategoryWidget(title: 'Dogs'),
-                CategoryWidget(title: 'Birds'),
-                CategoryWidget(title: 'Other'),
+              children: <Widget>[
+                CategoryWidget(
+                  title: 'Cats',
+                  onTap: () => navigateToCategoryPage(context, 'cat_page'), // For example
+                ),
+                CategoryWidget(
+                  title: 'Dogs',
+                  onTap: () => navigateToCategoryPage(context, 'dog_page'), // For example
+                ),
+                CategoryWidget(
+                  title: 'Birds',
+                  onTap: () => navigateToCategoryPage(context, 'bird_page'), // For example
+                ),
+                CategoryWidget(
+                  title: 'Other',
+                  onTap: () => navigateToCategoryPage(context, 'other_page'), // For example
+                ),
               ],
             ),
             Padding(
@@ -146,18 +165,26 @@ class MainPageContent extends StatelessWidget {
 
 class CategoryWidget extends StatelessWidget {
   final String title;
+  final VoidCallback onTap;
 
-  const CategoryWidget({Key? key, required this.title}) : super(key: key);
+  const CategoryWidget({
+    Key? key,
+    required this.title,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(8),
+    return InkWell(
+      onTap: onTap, // Use the passed onTap function
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Text(title),
       ),
-      child: Text(title),
     );
   }
 }
