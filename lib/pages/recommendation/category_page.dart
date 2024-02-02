@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/utils/const/recommendations_text.dart';
 
 class CareDetailsPage extends StatelessWidget {
   final String animalType;
@@ -51,11 +52,19 @@ class CareDetailsPage extends StatelessWidget {
   }
 
   void _onCategoryTap(BuildContext context, String title, String animalType) {
+    String categoryKey = title.trim();
+    String content = recommendationsText[animalType.toLowerCase()]?[categoryKey] ??
+        'No content available for this category';
+
     final route = MaterialPageRoute(
-      builder: (context) => Scaffold(
-        appBar: AppBar(title: Text(title)),
-        body: Center(child: Text('Details for $title')),
-      ),
+      builder: (context) =>
+          Scaffold(
+            appBar: AppBar(title: Text(title)),
+            body: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(content),
+            ),
+          ),
     );
     Navigator.push(context, route);
   }
